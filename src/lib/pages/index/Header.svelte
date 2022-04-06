@@ -53,6 +53,6 @@
 
 <style>
   .texture {
-    background: url('img/misc/diagonal.png');
+    background: url('/img/misc/diagonal.png');
   }
 </style>

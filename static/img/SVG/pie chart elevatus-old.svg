@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:bx="https://boxy-svg.com"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="88.406 285.875 124.95182 70.811655"
+   width="124.95182"
+   height="70.811653"
+   version="1.1"
+   id="svg333"
+   sodipodi:docname="pie chart elevatus.svg"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
+  <metadata
+     id="metadata337">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1051"
+     id="namedview335"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="6.9986879"
+     inkscape:cx="86.675067"
+     inkscape:cy="29.578865"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg333" />
+  <defs
+     id="defs289">
+     </defs>
+  <path
+     style="fill:#4bd269;fill-opacity:1;stroke-width:0.102079"
+     d="m 177.96137,285.88248 a 35.405795,35.405795 0 0 1 16.9295,4.30743 l -9.02287,16.57865 a 16.530877,16.530877 0 0 0 -7.90439,-2.01116 z"
+     bx:shape="pie 369.6 396.6 161.942 346.847 359.993 28.557 1@be5bce36"
+     id="path291" />
+  <path
+     style="fill:#33d3ff;stroke-width:0.102079;fill-opacity:1"
+     d="m 194.89087,290.18991 a 35.405795,35.405795 0 0 1 14.73316,15.26531 l -16.88448,8.43662 a 16.530877,16.530877 0 0 0 -6.87879,-7.12726 z"
+     bx:shape="pie 369.6 396.6 161.942 346.847 28.582 63.45 1@af6130e2"
+     id="path293" />
+  <path
+     style="fill:#ff674d;stroke-width:0.102079;fill-opacity:1"
+     d="m 209.60484,305.41673 a 35.405795,35.405795 0 0 1 -1.3456,34.16829 l -16.15686,-9.75804 a 16.530877,16.530877 0 0 0 0.62819,-15.95311 z"
+     bx:shape="pie 369.6 396.6 161.942 346.847 63.38 121.13 1@4d124775"
+     id="path295" />
+  <path
+     style="fill:#fab906;stroke-width:0.102079;fill-opacity:1"
+     d="m 208.31242,339.49662 a 35.405795,35.405795 0 0 1 -60.99026,-0.4567 l 16.32886,-9.46742 a 16.530877,16.530877 0 0 0 28.47616,0.21324 z"
+     bx:shape="pie 369.6 396.6 161.942 346.847 120.963 239.895 1@ba2887ce"
+     id="path297" />
+  <path
+     style="fill:#5f7abb;stroke-width:0.102079;fill-opacity:1"
+     d="m 147.32399,339.04309 a 35.405795,35.405795 0 0 1 30.73242,-53.16785 l -0.0556,18.87481 a 16.530877,16.530877 0 0 0 -14.34894,24.82398 z"
+     bx:shape="pie 369.6 396.6 161.942 346.847 239.889 0.169 1@9684820b"
+     id="path299" />
+  <text
+     style="font-weight:500;font-size:8px;font-family:Poppins;white-space:pre"
+     x="92.10791"
+     y="310.68832"
+     id="text301">NUTRITION</text>
+  <text
+     style="font-weight:500;font-size:8px;font-family:Poppins;white-space:pre"
+     x="87.93679"
+     y="296.96582"
+     id="text305">EDUCATION</text>
+  <text
+     style="font-size:5.33333px;font-family:Poppins;text-anchor:end;white-space:pre"
+     id="text325"
+     x="-61.920193"
+     y="13.855301"><tspan
+       sodipodi:role="line"
+       id="tspan421"
+       x="133.68478"
+       y="346.37234"><tspan
+         x="133.68478"
+         y="346.37234"
+         id="tspan319"
+         style="font-size:5.33333px"
+         dy="2">TUITION &amp;</tspan></tspan><tspan
+       sodipodi:role="line"
+       id="tspan423"
+       x="133.68478"
+       y="353.039">SCHOOL SUPPLIES</tspan></text>
+  <text
+     style="font-weight:300;font-size:5.33333px;font-family:Poppins;letter-spacing:-0.25px;white-space:pre"
+     x="89.45488"
+     y="323.52768"
+     id="text329"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33333px;font-family:Poppins;-inkscape-font-specification:Poppins"
+       id="tspan425">OPERATING COSTS</tspan></text>
+  <text
+     style="font-weight:500;font-size:5.33333px;font-family:Poppins;text-align:end;text-anchor:end;white-space:pre"
+     x="133.83319"
+     y="333.16776"
+     id="text301-5"><tspan
+       sodipodi:role="line"
+       id="tspan405"
+       x="133.83319"
+       y="333.16776"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33333px;font-family:Poppins;-inkscape-font-specification:Poppins"
+       dy="2">NEW PROJECTS</tspan><tspan
+       sodipodi:role="line"
+       x="133.83319"
+       y="339.83441"
+       id="tspan409"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33333px;font-family:Poppins;-inkscape-font-specification:Poppins">&amp; ACTIVITIES</tspan></text>
+  <rect
+     id="rect427"
+     width="5.6579146"
+     height="5.6579146"
+     x="134.82648"
+     y="291.48642"
+     style="fill:#5f7abb;fill-opacity:1" />
+  <rect
+     id="rect427-8"
+     width="5.6579146"
+     height="5.6579146"
+     x="134.82648"
+     y="-352.10687"
+     style="fill:#4bd269;fill-opacity:1"
+     transform="scale(1,-1)" />
+  <rect
+     id="rect427-8-5"
+     width="5.6579146"
+     height="5.6579146"
+     x="134.82648"
+     y="332.70831"
+     style="fill:#33d3ff;fill-opacity:1" />
+  <rect
+     id="rect427-8-5-1"
+     width="5.6579146"
+     height="5.6579146"
+     x="134.82648"
+     y="318.96768"
+     style="fill:#ff674d;fill-opacity:1" />
+  <rect
+     id="rect427-8-5-1-4"
+     width="5.6579146"
+     height="5.6579146"
+     x="134.82648"
+     y="305.22705"
+     style="fill:#fab906;fill-opacity:1" />
+  <path
+     style="fill:#ff674d;fill-opacity:1;stroke-width:0.102079"
+     d="m 203.78515,297.07749 a 35.405795,35.405795 0 0 1 8.52293,33.11559 l -18.2785,-4.7074 a 16.530877,16.530877 0 0 0 -3.97941,-15.46158 z"
+     bx:shape="pie 369.6 396.6 161.942 346.847 63.38 121.13 1@4d124775"
+     id="path295-7" />
+</svg>

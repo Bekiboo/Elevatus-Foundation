@@ -54,7 +54,7 @@
               value="✓"
               name="subscribe"
               id="mc-embedded-subscribe"
-              class="bg-blue-500 hover:bg-blue-400"
+              class="bg-orange-500 hover:bg-orange-400"
             />
           </div>
         </div>
@@ -67,7 +67,7 @@
       <div class="flex">
         <a href="https://facebook.com/ElevatusFoundation" target="blank">
           <svg
-            class="h-20 w-20 hover:fill-blue-500 hover:-translate-y-1 duration-200 social__facebook"
+            class="h-20 w-20 hover:fill-orange-500 hover:-translate-y-1 duration-200 social__facebook"
             fill="#fff"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -81,7 +81,7 @@
         </a>
         <a href="https://www.instagram.com/elevatusfoundation/" target="blank">
           <svg
-            class="h-20 w-20 hover:fill-blue-500 hover:-translate-y-1 duration-200 social__instagram"
+            class="h-20 w-20 hover:fill-orange-500 hover:-translate-y-1 duration-200 social__instagram"
             fill="#fff"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -98,7 +98,7 @@
           target="blank"
         >
           <svg
-            class="h-20 w-20 hover:fill-blue-500 hover:-translate-y-1 duration-200 social__youtube"
+            class="h-20 w-20 hover:fill-orange-500 hover:-translate-y-1 duration-200 social__youtube"
             fill="#fff"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

@@ -5,9 +5,9 @@
 <div class="flex flex-col justify-end items-center relative w-full text-white overflow-hidden">
   
   <!-- Desktop Hero -->
-  <div class="texture smm:hidden h-[80vh] w-full absolute z-20"></div>
+  <div class="texture smm:hidden h-[80vh] sm:min-h-[400px] w-full absolute z-10"></div>
   <video
-    class="smm:hidden object-cover h-[80vh] w-full brightness-50"
+    class="smm:hidden object-cover h-[80vh] sm:min-h-[400px] w-full brightness-50"
     loop
     muted
     autoplay
@@ -19,13 +19,13 @@
 
   <!-- Mobile Hero -->
   <img
-    class="object-cover h-[90vh] brightness-[35%] sm:hidden"
+    class="object-cover h-[80vh] w-full brightness-[35%] sm:hidden"
     src="img/child_redhood_breaking_rocks.jpg"
     alt="Malagasy children breaing rocks"
   />
   <!-- Caption -->
-  <div class="mx-auto flex flex-col justify-end absolute container z-30">
-    <div class="flex flex-col mb-32 sm:mb-16">
+  <div class="mx-auto flex flex-col justify-end absolute container z-20">
+    <div class="flex flex-col mb-16">
       <h4 class="font-thin text-lg mb-1 sm:text-2xl">
         Fighting Child Labor in Madagascar
       </h4>

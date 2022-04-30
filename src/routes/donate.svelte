@@ -1,5 +1,5 @@
 <script>
-  import Hero from '$lib/layout/Hero.svelte'
+  import Hero from '$lib/modules/Hero.svelte'
 
   const hero = {
     src: 'img/under_construction.jpg',

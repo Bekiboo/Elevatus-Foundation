@@ -18,6 +18,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@supabase/supabase-js": "^1.33.3",
     "daisyui": "^2.9.0"
   }
 }

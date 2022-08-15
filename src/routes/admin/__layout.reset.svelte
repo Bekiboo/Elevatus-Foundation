@@ -1,23 +1,20 @@
 <script context="module">
-  import { user } from '$lib/stores/auth'
-  let currentUser
-
-  export async function load() {
-    user.subscribe((user) => (currentUser = user))
-    if (currentUser == false) {
-      return { status: 302, redirect: '/' }
-    }
-    return {}
-  }
+// TODO find a way to check if admin in backend
 </script>
 
 <script>
   import '../../app.css'
   import Sidebar from '$lib/admin/Sidebar.svelte'
+  import { checkIfAdmin } from '$lib/auth/isAuth'
+  import { onMount } from 'svelte'
+  let isAdmin = false
 
+  onMount(async () => {
+    isAdmin = await checkIfAdmin()
+  })
 </script>
 
-{#if currentUser}
+{#if isAdmin}
   <Sidebar />
 
   <main class="min-h-screen ml-60 pt-4 bg-slate-900">

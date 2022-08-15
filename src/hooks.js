@@ -1,15 +1,13 @@
-import { supabase } from '$lib/auth/supabase'
-
-export const getSession = (request) => {
-  console.log('request: ', request)
-  return {
-    user: {
-      id: 'fdsvsdv',
-      name: 'julien',
-      access: 'admin',
-    },
-  }
-}
+// export const getSession = (request) => {
+//   console.log('request: ', request)
+//   return {
+//     user: {
+//       id: 'fdsvsdv',
+//       name: 'julien',
+//       access: 'admin',
+//     },
+//   }
+// }
 
 // export async function handle({ event, resolve }) {
 //   if (event.url.pathname.startsWith('/custom')) {

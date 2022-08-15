@@ -9,23 +9,26 @@
   import '../app.css'
   import Navbar from '$lib/modules/Header/Navbar.svelte'
   import Footer from '$lib/modules/Footer/Footer.svelte'
-  import { user } from '$lib/stores/auth'
+  import { user, isAdmin } from '$lib/stores/auth'
   import { page } from '$app/stores'
+  import { checkIfAdmin } from '$lib/auth/isAuth'
   import PageTransition from '$lib/modules/PageTransition.svelte'
 
   $: currentPage = $page.url.pathname
 
   user.set(supabase.auth.user())
-  // console.log('user lalala ', $user?.id);
 
-  supabase.auth.onAuthStateChange((_, session) => {
+  supabase.auth.onAuthStateChange( async (_, session) => {
     user.set(session?.user)
     if (session?.user) {
       console.log('session.user IN: ', session.user)
     } else {
       console.log('session.user OUT: ', session.user)
     }
+    isAdmin.set(await checkIfAdmin())
   })
+
+
 </script>
 
 <Navbar />

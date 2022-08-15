@@ -2,6 +2,7 @@
   import { supabase } from '$lib/auth/supabase'
 
   let loading = false
+  let username
   let email
   let password
   let confirmPassword
@@ -11,27 +12,49 @@
   const handleLogin = async () => {
     if (password !== confirmPassword) {
       message = 'Your passwords must match.'
-    } else {
-      message = ''
-      try {
-        loading = true
-        const { user, error } = await supabase.auth.signUp({
+      return
+    }
+    if (
+      // !username ||
+      !email ||
+      !password
+    ) {
+      message = 'All fields are required.'
+      return
+    }
+    try {
+      loading = true
+      const { user, error } = await supabase.auth.signUp(
+        {
           email,
           password,
-        })
-        if (error) throw error
-        alert('Success')
-      } catch (error) {
-        console.error(error)
-        alert(error.error_description || error.message)
-      } finally {
-        loading = false
-      }
+        },
+        { data: { user_name: 'test user name', avatar_url: 'mon avatar' } }
+      )
+      if (error) throw error
+      alert('Success')
+    } catch (error) {
+      console.error(error)
+      alert(error.error_description || error.message)
+    } finally {
+      loading = false
     }
   }
 </script>
 
 <form class:absolute on:submit|preventDefault={handleLogin}>
+  <!-- <div class="mb-4">
+    <label class="block mb-1 text-sm font-medium text-gray-900" for="username"
+      >Username</label
+    >
+    <input
+      class="bg-gray-50 smm:w-60 w-80 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 "
+      name="username"
+      type="text"
+      placeholder="Your Username"
+      bind:value={username}
+    />
+  </div> -->
   <div class="mb-4">
     <label class="block mb-1 text-sm font-medium text-gray-900" for="email"
       >Email</label

@@ -7,10 +7,12 @@
   import Sidebar from '$lib/admin/Sidebar.svelte'
   import { checkIfAdmin } from '$lib/auth/isAuth'
   import { onMount } from 'svelte'
+import { goto } from '$app/navigation';
   let isAdmin = false
 
   onMount(async () => {
     isAdmin = await checkIfAdmin()
+    if(!isAdmin) goto('/')
   })
 </script>
 

@@ -29,7 +29,12 @@
           email,
           password,
         },
-        { data: { user_name: 'test user name', avatar_url: 'mon avatar' } }
+        // {
+        //   data: {
+        //     user_name: 'test user name2',
+        //     avatar_url: 'test avatar2',
+        //   },
+        // }
       )
       if (error) throw error
       alert('Success')

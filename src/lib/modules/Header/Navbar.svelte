@@ -9,16 +9,20 @@
 
   export let menuOpened = false
   export let userOpened = false
+  export let opaque = false
+  
+  let transparent = true
 
   const navbarOffset = 120
   let yOffset
-  let transparent = true
 
   onMount(() => {
-    yOffset > 120 ? (transparent = false) : (transparent = true)
-    window.onscroll = () => {
-      yOffset = window.pageYOffset
-      yOffset > navbarOffset ? (transparent = false) : (transparent = true)
+    if (!opaque) {
+      yOffset > 120 ? (transparent = false) : (transparent = true)
+      window.onscroll = () => {
+        yOffset = window.pageYOffset
+        yOffset > navbarOffset ? (transparent = false) : (transparent = true)
+      }
     }
   })
 

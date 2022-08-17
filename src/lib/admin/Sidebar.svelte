@@ -8,8 +8,8 @@
     <ul class="mt-8">
       <li class="font-bold">Blog</li>
       <ul class="ml-4">
-        <li><a href="/admin/add-post">Add Post</a></li>
-        <li><a href="/admin/manage-posts">Manage Posts</a></li>
+        <li><a href="/admin/blog/add-post">Add Post</a></li>
+        <li><a href="/admin/blog/manage-posts">Manage Posts</a></li>
       </ul>
       <li class="font-bold"><a href="/admin/children">Children</a></li>
       <li class="font-bold"><a href="/admin/sponsors">Sponsors</a></li>

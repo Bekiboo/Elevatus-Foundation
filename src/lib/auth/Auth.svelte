@@ -28,6 +28,9 @@
 
 {#if loggedIn}
   <div class="w-[66vw] sm:w-80 mx-auto">
+    <a href="/profile">Profile</a>
+
+    <!-- SignOut Button -->
     <button
       class="text-white bg-orange-500 hover:bg-orange-600 border-2 border-white shadow-md active:shadow-none font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center duration-100"
       type="submit"

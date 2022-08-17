@@ -1,9 +1,3 @@
-<!-- <script context="module">
-  export const load = ({stuff}) => {
-    console.log('stuff: ',stuff);
-    return {}
-  }
-</script> -->
 <script>
   import { supabase } from '$lib/auth/supabase'
   import '../app.css'
@@ -18,7 +12,7 @@
 
   user.set(supabase.auth.user())
 
-  supabase.auth.onAuthStateChange( async (_, session) => {
+  supabase.auth.onAuthStateChange(async (_, session) => {
     user.set(session?.user)
     if (session?.user) {
       console.log('session.user IN: ', session.user)
@@ -27,17 +21,15 @@
     }
     isAdmin.set(await checkIfAdmin())
   })
-
-
 </script>
 
 <Navbar />
-<!-- <main class="pt-[72px]"> -->
-  <PageTransition refresh={currentPage}>
-    <main>
-      <slot />
-    </main>
-  </PageTransition>
+
+<PageTransition refresh={currentPage}>
+  <main>
+    <slot />
+  </main>
+</PageTransition>
 
 <Footer />
 

@@ -79,7 +79,7 @@
     <a href="/home" class="hidden sm:block"
       ><img
         class="h-14 mt-2 -translate-y-1"
-        src="img/icons/white_logo.png"
+        src="../img/icons/white_logo.png"
         alt="Elevatus Logo"
       /></a
     >
@@ -88,7 +88,7 @@
     <a href="/home" class="sm:hidden flex items-center"
       ><img
         class="h-12 mt-2 ml-2 -translate-y-1 z-50"
-        src="img/icons/Phoenix-white-stroke-thin.png"
+        src="../img/icons/Phoenix-white-stroke-thin.png"
         alt="Elevatus Logo"
         on:click={closeNav}
       />

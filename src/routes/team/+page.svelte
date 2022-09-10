@@ -4,7 +4,7 @@
     export let data
   
     const hero = {
-      src: 'img/hero_team.jpg',
+      src: 'img/hero/hero_team.jpg',
       alt: 'Under Construction',
       title: 'Our Team',
       subtitle: 'Dedicated and Passionate',

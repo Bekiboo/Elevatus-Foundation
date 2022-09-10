@@ -1,7 +1,10 @@
 <script>
   import Button from '$lib/components/Button.svelte'
+
+  let innerWidth
 </script>
 
+<svelte:window bind:innerWidth />
 <div
   class="flex flex-col justify-end items-center relative w-full text-white overflow-hidden"
 >
@@ -13,9 +16,10 @@
     class="smm:hidden object-cover h-[80vh] sm:min-h-[400px] w-full brightness-50"
     loop
     muted
-    autoplay
-    preload="auto"
+    preload="none"
+    autoplay={innerWidth > 640 ? true : null}
   >
+  <!-- A CORRIGER, VIDEO NE CHARGE PLUS EN GRAND ECRAN, innerWidth a une valeur de 0 au chargement -->
     <source src="img/Elevatus_loop_large.mp4" type="video/mp4" />
     <div class="texture top-0 left-0 w-[100vw] h-[100vh]" />
   </video>
@@ -24,7 +28,7 @@
   <img
     class="object-cover h-[80vh] w-full brightness-[35%] sm:hidden"
     src="img/child_redhood_breaking_rocks.jpg"
-    alt="Malagasy children breaking rocks"
+    alt="Malagasy child wearing a red hood breaking rocks"
   />
   <!-- Caption -->
   <div class="mx-auto flex flex-col justify-end absolute container z-20">

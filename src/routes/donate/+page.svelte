@@ -2,7 +2,7 @@
     import Hero from '$lib/components/Hero.svelte'
   
     const hero = {
-      src: 'img/under_construction.jpg',
+      src: 'img/hero/under_construction.jpg',
       alt: 'Under Construction',
       title: 'Donate',
       subtitle: 'Under Construction',

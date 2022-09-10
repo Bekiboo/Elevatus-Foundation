@@ -5,7 +5,7 @@
   export let data = []
 
   const hero = {
-    src: 'img/group_picture_zoo.jpg',
+    src: 'img/hero/group_picture_zoo.jpg',
     alt: 'Under Construction',
     title: 'Blog',
     subtitle: 'Read about our work in Madagascar',
@@ -27,13 +27,13 @@
   <div class="w-full">
     {#each data.data as blogPost, index}
       {#if index == 0}
-        <div class="flex mx-auto md:max-w-6xl my-16">
+        <div class="flex flex-col mx-auto max-w-2xl md:flex-row lg:max-w-6xl my-16">
           <a
             href="/blog/{blogPost.id}"
             class="basis-1/2 hover:opacity-80 duration-100 flex-none"
           >
             <img
-              class="object-cover w-full h-96 md:h-auto md:w-full"
+              class="object-cover w-full h-96 md:w-full"
               src={blogPost.img}
               alt={blogPost.title}
             />
@@ -50,7 +50,7 @@
               {blogPost.caption != null ? blogPost.caption : ''}
             </p>
             <div>
-              {blogPost.body.substring(0, 200)}
+              {blogPost.body.substring(0, 400)}
               <a href="/blog/{blogPost.id}" class="hover:text-orange-500"
                 >[...]</a
               >
@@ -61,10 +61,10 @@
       {/if}
     {/each}
 
-    <div class="flex gap-8 flex-wrap">
+    <div class="flex gap-x-8 gap-y-16 flex-wrap">
       {#each data.data as blogPost, index}
         {#if index != 0}
-          <div class="flex flex-col mx-auto md:max-w-6xl basis-1/4">
+          <div class="flex flex-col mx-auto md:max-w-xs">
             <a
               href="/blog/{blogPost.id}"
               class="hover:opacity-80 duration-100"

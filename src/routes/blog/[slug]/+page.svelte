@@ -20,4 +20,7 @@
 
 <Hero {...hero} />
 
-<div class="container my-8 max-w-[60ch]">{post.body}</div>
+<div class="container my-8 max-w-[60ch]">
+  <a href="/blog">&larr; Back to the Blog</a>
+  <p class="mt-4">{post.body}</p>
+</div>

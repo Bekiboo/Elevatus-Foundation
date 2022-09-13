@@ -1,5 +1,5 @@
 <script>
-  export let src, alt, title, subtitle, body, index
+  export let src, alt, title, body, index
 
   let textAlign = 'text-left'
   let alignItem = 'items-start'
@@ -43,7 +43,6 @@
       class="md:basis-2/3 flex flex-col md:px-16 md:{textAlign} md:{alignItem}"
     >
       <h5 class="mb-2 text-4xl text-slate-600 font-bold">{title}</h5>
-      <!-- <div>{subtitle}</div> -->
       {#each body as paragraph}
         <p class="mb-3 font-normal text-gray-700 max-w-[40ch]">{paragraph}</p>
       {/each}

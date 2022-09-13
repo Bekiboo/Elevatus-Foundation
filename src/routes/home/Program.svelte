@@ -1,6 +1,8 @@
 <script>
   export let src, alt, title, body, index
 
+  let odd = index % 2 == 0
+
   let textAlign = 'text-left'
   let alignItem = 'items-start'
   let flexDirection = 'flex-row'
@@ -30,9 +32,12 @@
   let random = Math.floor(Math.random() * blobValues.length)
 </script>
 
-{index % 2}
 <div class="container mt-16">
-  <div class="flex flex-col md:{flexDirection} items-center">
+  <div
+    class="flex flex-col {odd
+      ? 'md:flex-row'
+      : 'md:flex-row-reverse'} items-center"
+  >
     <img
       class="h-96 w-96 object-cover md:basis-1/3"
       style="border-radius: {blobValues[random]}"
@@ -40,7 +45,9 @@
       {alt}
     />
     <div
-      class="md:basis-2/3 flex flex-col md:px-16 md:{textAlign} md:{alignItem}"
+      class="md:basis-2/3 flex flex-col md:px-16 
+      {odd ? 'md:text-left' : 'md:text-right'} 
+      {odd ? 'md:items-start' : 'md:items-end'}"
     >
       <h5 class="mb-2 text-4xl text-slate-600 font-bold">{title}</h5>
       {#each body as paragraph}

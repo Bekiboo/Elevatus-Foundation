@@ -3,15 +3,6 @@
 
   const programs = [
     {
-      src: 'img/program/school_supplies.jpg',
-      alt: '',
-      title: 'School Supplies',
-      body: [
-        'Each year, Elevatus pays for the tuition and the school supplies of every sponsored children and distributes notebooks to all children.',
-        'Throughout the year, we also make sure that their school supplies are updated and replenished',
-      ],
-    },
-    {
       src: 'img/program/food_distribution.jpg',
       alt: '',
       title: 'Food Distribution',
@@ -19,6 +10,16 @@
         'A hungry child is a child who will have a difficult time focusing at school.',
         'In 2020, Elevatus distributed 21,600 meals at the Ambohidranomanga Junior School, preventing dozens of children from going malnourished.',
         'With your help, we hope to double this number in 2022.',
+      ],
+    },
+    {
+      src: 'img/program/tutoring_classes.jpg',
+      alt: '',
+      title: 'Tutoring Classes',
+      body: [
+        'Every Wednesday afternoon, students have the option to attend tutoring classes for 3 hours.',
+        'Despite tutoring classes not being mandatory, almost every child from the junior school attends weekly. A few students from the nearby high school join as well!',
+        'We need your help to increase the number of teachers, and even to build new classrooms to hold all those children.',
       ],
     },
     {
@@ -32,13 +33,12 @@
       ],
     },
     {
-      src: 'img/program/tutoring_classes.jpg',
+      src: 'img/program/school_supplies.jpg',
       alt: '',
-      title: 'Tutoring Classes',
+      title: 'School Supplies and Tuition',
       body: [
-        'Every Wednesday afternoon, students have the option to attend tutoring classes for 3 hours.',
-        'Despite tutoring classes not being mandatory, almost every child from the junior school attends weekly. A few students from the nearby high school join as well!',
-        'We need your help to increase the number of teachers, and even to build new classrooms to hold all those children.',
+        'Each year, Elevatus pays for the tuition and the school supplies of every sponsored children and distributes notebooks to all children.',
+        'Throughout the year, we also make sure that their school supplies are updated and replenished',
       ],
     },
     {

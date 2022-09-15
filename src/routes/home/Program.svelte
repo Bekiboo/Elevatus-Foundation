@@ -3,16 +3,6 @@
 
   let odd = index % 2 == 0
 
-  let textAlign = 'text-left'
-  let alignItem = 'items-start'
-  let flexDirection = 'flex-row'
-
-  if (index % 2 == 0) {
-    textAlign = 'text-right'
-    alignItem = 'items-end'
-    flexDirection = 'flex-row-reverse'
-  }
-
   //   const progress = tweened(0, {
   //     duration: 1000,
   //     easing: cubicOut,
@@ -34,9 +24,8 @@
 
 <div class="container mt-16">
   <div
-    class="flex flex-col {odd
-      ? 'md:flex-row'
-      : 'md:flex-row-reverse'} items-center"
+    class="flex flex-col items-center
+    {odd ? 'md:flex-row' : 'md:flex-row-reverse'}"
   >
     <img
       class="h-96 w-96 object-cover md:basis-1/3"

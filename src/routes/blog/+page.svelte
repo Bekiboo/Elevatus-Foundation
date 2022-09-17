@@ -23,9 +23,11 @@
 
 <Hero {...hero} />
 
+<!-- {data.blogPostsValue[0].title} -->
+
 <section class="container min-h-[50vh]">
   <div class="w-full">
-    {#each data.data as blogPost, index}
+    {#each data.blogPostsValue as blogPost, index}
       {#if index == 0}
         <div class="flex flex-col mx-auto max-w-2xl md:flex-row lg:max-w-6xl my-16">
           <a
@@ -34,7 +36,7 @@
           >
             <img
               class="object-cover w-full h-96 md:w-full"
-              src={blogPost.img}
+              src={blogPost.primary_img}
               alt={blogPost.title}
             />
           </a>
@@ -62,7 +64,7 @@
     {/each}
 
     <div class="flex gap-x-8 gap-y-16 flex-wrap">
-      {#each data.data as blogPost, index}
+      {#each data.blogPostsValue as blogPost, index}
         {#if index != 0}
           <div class="flex flex-col mx-auto md:max-w-xs">
             <a
@@ -71,7 +73,7 @@
             >
               <img
                 class="object-cover w-full h-96 md:h-auto md:w-full"
-                src={blogPost.img}
+                src={blogPost.primary_img}
                 alt={blogPost.title}
               />
             </a>

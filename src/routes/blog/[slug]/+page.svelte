@@ -1,12 +1,15 @@
 <script>
   import Hero from '$lib/components/Hero.svelte'
+  import { onMount } from 'svelte'
 
   export let data
-
-  let post = data[0]
+  
+  let paragraphs = []
+  let post = data
+  
 
   const hero = {
-    src: post.img,
+    src: post.primary_img,
     alt: 'Under Construction',
     title: post.title,
     subtitle: post.caption,
@@ -22,5 +25,7 @@
 
 <div class="container my-8 max-w-[60ch]">
   <a href="/blog">&larr; Back to the Blog</a>
-  <p class="mt-4">{post.body}</p>
+  <p class="mt-4 whitespace-pre-line">{post.body}</p>
 </div>
+<img src={post.secondary_img} alt="">
+<img src={post.tertiary_img} alt="">

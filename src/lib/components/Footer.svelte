@@ -1,73 +1,22 @@
-<footer>
-  <div
-    class="flex justify-evenly bg-slate-800 text-white py-4
-    smm:container smm:flex-col sm:h-40 smm:gap-8"
-  >
-    <!-- Begin Mailchimp Signup Form -->
-    <div id="mc_embed_signup">
-      <h5>EMAIL NEWSLETTER SIGNUP</h5>
-      <form
-        action="https://elevatusfoundation.us5.list-manage.com/subscribe/post?u=6e762d4dd84810ed9462316c5&amp;id=a33c90105f"
-        method="post"
-        id="mc-embedded-subscribe-form"
-        name="mc-embedded-subscribe-form"
-        class="bg-white p-2"
-        target="_blank"
-        novalidate
-      >
-        <div id="mc_embed_signup_scroll" class="relative">
-          <div class="mc-field-group">
-            <label for="mce-EMAIL" />
-            <input
-              type="email"
-              value=""
-              name="EMAIL"
-              class="required email"
-              id="mce-EMAIL"
-              placeholder="Your Email"
-            />
-          </div>
-          <div id="mce-responses" class="clear">
-            <div
-              class="response"
-              id="mce-error-response"
-              style="display: none"
-            />
-            <div
-              class="response"
-              id="mce-success-response"
-              style="display: none"
-            />
-          </div>
-          <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-          <div style="position: absolute; left: -5000px" aria-hidden="true">
-            <input
-              type="text"
-              name="b_6e762d4dd84810ed9462316c5_a33c90105f"
-              tabindex="-1"
-              value=""
-            />
-          </div>
-          <div class="clear">
-            <input
-              type="submit"
-              value="✓"
-              name="subscribe"
-              id="mc-embedded-subscribe"
-              class="bg-orange-500 hover:bg-orange-400"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-    <!--End mc_embed_signup-->
+<script>
+  let currentYear = new Date().getFullYear()
+</script>
 
-    <div class="social">
-      <h5>CONNECT WITH US</h5>
+<footer class="p-4 shadow md:px-6 md:py-8 bg-gray-900 text-gray-400">
+  <div class="sm:flex sm:items-center sm:justify-between">
+    <a href="/home" class="hidden sm:block"
+      ><img
+        class="h-14 mt-2 -translate-y-1"
+        src="../img/icons/white_logo.png"
+        alt="Elevatus Logo"
+      /></a
+    >
+    <div class="flex items-center">
+      <h5 class="md:text-xl font-bold mr-4">CONNECT WITH US:</h5>
       <div class="flex">
         <a href="https://facebook.com/ElevatusFoundation" target="blank">
           <svg
-            class="h-20 w-20 hover:fill-orange-500 hover:-translate-y-1 duration-200 social__facebook"
+            class="h-14 w-14 hover:fill-orange-500 hover:-translate-y-1 duration-200 social__facebook"
             fill="#fff"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -81,7 +30,7 @@
         </a>
         <a href="https://www.instagram.com/elevatusfoundation/" target="blank">
           <svg
-            class="h-20 w-20 hover:fill-orange-500 hover:-translate-y-1 duration-200 social__instagram"
+            class="h-14 w-14 hover:fill-orange-500 hover:-translate-y-1 duration-200 social__instagram"
             fill="#fff"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -98,7 +47,7 @@
           target="blank"
         >
           <svg
-            class="h-20 w-20 hover:fill-orange-500 hover:-translate-y-1 duration-200 social__youtube"
+            class="h-14 w-14 hover:fill-orange-500 hover:-translate-y-1 duration-200 social__youtube"
             fill="#fff"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -112,35 +61,10 @@
         </a>
       </div>
     </div>
-
-    <div class="copyright">© 2021 Elevatus Foundation</div>
   </div>
+  <hr class="my-6 sm:mx-auto border-gray-700 lg:my-8" />
+  <span class="block text-sm sm:text-center"
+    >© {currentYear} <a href="https://flowbite.com/" class="hover:underline">Elevatus Foundation</a
+    >. All Rights Reserved.
+  </span>
 </footer>
-
-<style>
-  .mc-field-group {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-  }
-  input {
-    border: none;
-    height: 3rem;
-    padding-left: 0.5rem;
-  }
-
-  .clear {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-  }
-  .clear input {
-    border: none;
-    color: white;
-    font-weight: 900;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-</style>

@@ -13,8 +13,7 @@ export const load = async () => {
     const { data, error } = await supabase.from('blog-post').select()
     if (error) return console.error('loadBlogPosts: ', error)
 
-    let sortedArray
-
+    // Todo: sort by date rather than by id
     data.sort((a, b) => {
       return a.id - b.id
     })

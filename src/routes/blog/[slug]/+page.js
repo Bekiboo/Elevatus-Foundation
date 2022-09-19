@@ -13,7 +13,6 @@ export async function load({ params }) {
 
   // If the blogPosts store is empty, then fetch the blog post from DB
   if (blogPostsValue == '') {
-    console.log('first if')
     const { data, error } = await supabase
       .from(`blog-post`)
       .select()

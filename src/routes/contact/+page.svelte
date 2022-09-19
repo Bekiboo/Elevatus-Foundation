@@ -3,7 +3,7 @@
 
   const hero = {
     src: 'img/hero/contact.jpg',
-    alt: 'Under Construction',
+    alt: 'Package with "You\'ve got mail" written on it',
     title: 'Contact Us',
     subtitle: 'Leave a message, and we will try to answer within a week',
   }

@@ -2,10 +2,10 @@
   import Hero from '$lib/components/Hero.svelte'
 
   const hero = {
-    src: 'img/hero/under_construction.jpg',
-    alt: 'Under Construction',
-    title: 'Contact Us',
-    subtitle: 'Leave a message, and we will try to answer within a week',
+    src: '../img/hero/completed.jpg',
+    alt: 'Group of Malagasy children waving',
+    title: 'Donation Completed',
+    subtitle: 'Your donation went through',
   }
 </script>
 
@@ -16,3 +16,11 @@
 
 <Hero {...hero} />
 
+<div class="container py-12">
+  <p>
+    Thank you infinitely for your generous donation. Please, use our <a
+    href="/contact"
+    class="underline text-orange-800 hover:text-orange-600">Contact Form</a
+  > if you have any question.
+  </p>
+</div>

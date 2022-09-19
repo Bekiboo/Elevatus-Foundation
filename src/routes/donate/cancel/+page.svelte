@@ -2,10 +2,10 @@
   import Hero from '$lib/components/Hero.svelte'
 
   const hero = {
-    src: '../img/hero/under_construction.jpg',
-    alt: 'Under Construction',
+    src: '../img/hero/cancel.jpg',
+    alt: 'Stop Sign',
     title: 'Donation Cancelled',
-    subtitle: '',
+    subtitle: 'Your donation did not go through',
   }
 </script>
 

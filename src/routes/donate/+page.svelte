@@ -1,6 +1,7 @@
 <script>
   import Hero from '$lib/components/Hero.svelte'
-  // import PaymentButton from './PaymentButton.svelte'
+  import { fade } from 'svelte/transition'
+  import PaymentButton from './PaymentButton.svelte'
 
   const hero = {
     src: 'img/hero/donate.jpg',
@@ -9,42 +10,45 @@
     subtitle: 'Contribute to saving children in Madagascar from trafficking',
   }
 
-  // let selectedPlan
+  const plans = {
+    sponsor25: {
+      url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KAC88B2QR7UEL',
+      buttonText: 'Sponsor for $25/month',
+    },
+    sponsor50: {
+      url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=J6NP7D9JU64CN',
+      buttonText: 'Sponsor for $50/month',
+    },
+    sponsor100: {
+      url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BP6QD3CLJKRY8',
+      buttonText: 'Sponsor for $100/month',
+    },
+    oneTime50: {
+      url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BP6QD3CLJKRY8',
+      buttonText: 'Donate $50',
+    },
+    oneTime100: {
+      url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BP6QD3CLJKRY8',
+      buttonText: 'Donate $100',
+    },
+    oneTime200: {
+      url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BP6QD3CLJKRY8',
+      buttonText: 'Donate $200',
+    },
+    sponsorOther: {
+      url: 'https://www.paypal.com/donate/?hosted_button_id=A7L2N5TC4QV5E',
+      buttonText: 'Customize your sponsor',
+    },
+    oneTimeOther: {
+      url: 'https://www.paypal.com/donate/?hosted_button_id=A7L2N5TC4QV5E',
+      buttonText: 'Customize your donation',
+    }
+  }
 
-  // const plans = {
-  //   sponsor25: {
-  //     url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KAC88B2QR7UEL',
-  //     buttonText: 'Sponsor for $25/month',
-  //   },
-  //   sponsor50: {
-  //     url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=J6NP7D9JU64CN',
-  //     buttonText: 'Sponsor for $50/month',
-  //   },
-  //   sponsor100: {
-  //     url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BP6QD3CLJKRY8',
-  //     buttonText: 'Sponsor for $100/month',
-  //   },
-  //   donate50: {
-  //     url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BP6QD3CLJKRY8',
-  //     buttonText: 'Donate $50',
-  //   },
-  //   donate100: {
-  //     url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BP6QD3CLJKRY8',
-  //     buttonText: 'Donate $100',
-  //   },
-  //   donate200: {
-  //     url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BP6QD3CLJKRY8',
-  //     buttonText: 'Donate $200',
-  //   },
-  //   sponsorOther: {
-  //     url: '',
-  //     buttonText: 'Choose how much you sponsor',
-  //   },
-  //   donateOther: {
-  //     url: '',
-  //     buttonText: 'Choose how much you donate',
-  //   },
-  // }
+  let monthly = true
+  let sponsorPlan = plans.sponsor25
+  let oneTimePlan = plans.oneTime50
+
 </script>
 
 <svelte:head>
@@ -54,79 +58,171 @@
 
 <Hero {...hero} />
 
-<div class="flex justify-center mt-8">
-  <div
-    class="absolute scale-150 mt-[0.40rem] mr-1"
-    id="donate-button-container"
-  >
-    <div id="donate-button" />
-    <script
-      src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js"
-      charset="UTF-8"></script>
-    <script>
-      PayPal.Donation.Button({
-        env: 'production',
-        hosted_button_id: 'A7L2N5TC4QV5E',
-        image: {
-          src: 'https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif',
-          alt: 'Donate with PayPal button',
-          title: 'PayPal - The safer, easier way to pay online!',
-        },
-      }).render('#donate-button')
-    </script>
+<div class="container flex gap-5 flex-col-reverse md:flex-row my-12">
+
+  <div class="basis-1/2 flex flex-col">
+    <h2 class="text-3xl md:text-5xl font-medium mb-2">GIVE THEM THEIR CHILDHOOD BACK</h2> 
+    <p class="text-sm max-w-[40ch]">
+      By donating today, you ensure a brighter future to the children we 
+      support in Madagascar.
+    </p>
+    <div class="mt-10">
+      <p>
+        Thank you for your ongoing support
+        to Elevatus. When you sponsor a child, you provide him or her with:
+      </p> 
+      <ul class="space-y-1 list-disc list-inside my-4 ml-4">
+        <li>Two healthy healthy meals every school day</li>
+        <li>School tuition and school supplies</li>
+        <li>Weekly tutoring classes</li>
+        <li>Sewing classes</li>
+        <li>Extracurricular activities</li>
+        <li>And much more !</li>
+      </ul>
+      <p>
+        Larger donations and one-time donations are typically used for special
+        projects like school renovation, or to support children who haven't 
+        found a sponsor yet.
+      </p>
+    </div>
   </div>
 
-  <button
-    type="button"
-    class="absolute pointer-events-none w-36 pl-8 text-gray-900 bg-[#F7BE38] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center focus:ring-[#F7BE38]/50 mr-2 mb-2"
-  >
-    <svg
-      class="mr-2 -ml-1 w-4 h-4"
-      aria-hidden="true"
-      focusable="false"
-      data-prefix="fab"
-      data-icon="paypal"
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 384 512"
-      ><path
-        fill="currentColor"
-        d="M111.4 295.9c-3.5 19.2-17.4 108.7-21.5 134-.3 1.8-1 2.5-3 2.5H12.3c-7.6 0-13.1-6.6-12.1-13.9L58.8 46.6c1.5-9.6 10.1-16.9 20-16.9 152.3 0 165.1-3.7 204 11.4 60.1 23.3 65.6 79.5 44 140.3-21.5 62.6-72.5 89.5-140.1 90.3-43.4 .7-69.5-7-75.3 24.2zM357.1 152c-1.8-1.3-2.5-1.8-3 1.3-2 11.4-5.1 22.5-8.8 33.6-39.9 113.8-150.5 103.9-204.5 103.9-6.1 0-10.1 3.3-10.9 9.4-22.6 140.4-27.1 169.7-27.1 169.7-1 7.1 3.5 12.9 10.6 12.9h63.5c8.6 0 15.7-6.3 17.4-14.9 .7-5.4-1.1 6.1 14.4-91.3 4.6-22 14.3-19.7 29.3-19.7 71 0 126.4-28.8 142.9-112.3 6.5-34.8 4.6-71.4-23.8-92.6z"
-      /></svg
-    >
-    Donate
-  </button>
+  <div class="basis-1/2 flex flex-col">
+
+    <div class="flex text-gray-500 mb-5 text-lg h-16 items-center w-64 mx-auto 
+                rounded-lg cursor-pointer outline outline-2 outline-gray-300">
+      <div class="bg-orange-500 absolute w-32 h-16 -z-10 duration-150 rounded-lg 
+                  ease-in-out {monthly ? '' : 'translate-x-32'}" />
+      <div
+        class="w-32 text-center h-full grid items-center"
+        class:text-white={monthly}
+        on:click={() => (monthly = true)}>
+        Monthly Sponsor
+      </div>
+
+      <div
+        class="w-32 text-center h-full grid items-center"
+        class:text-white={!monthly}
+        on:click={() => (monthly = false)}>
+        One Time Donation
+      </div>
+    </div>
+
+    {#if monthly}
+      <div class="flex flex-col w-60 mx-auto" in:fade={{duration: 150}}>
+        <p class="text-center mb-4">Choose an amount to give each month</p>
+
+        <div class="flex mb-4">
+          <div class="flex items-center h-5">
+              <input bind:group={sponsorPlan} value={plans.sponsor25} checked id="helper-radio-1" name="radio" aria-describedby="helper-radio-text" type="radio"
+              class="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+          </div>
+          <div class="ml-2 text-sm">
+              <label for="helper-radio-1" class="font-medium text-lg text-gray-900 cursor-pointer">$25/Month</label>
+              <p id="helper-radio-text" class="text-xs font-normal text-gray-500">Sponsor One Child</p>
+          </div>
+        </div>
+
+        <div class="flex mb-4">
+          <div class="flex items-center h-5">
+              <input bind:group={sponsorPlan} value={plans.sponsor50} id="helper-radio-2" name="radio" aria-describedby="helper-radio-text" type="radio"
+              class="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+          </div>
+          <div class="ml-2 text-sm">
+              <label for="helper-radio-2" class="font-medium text-lg text-gray-900 cursor-pointer">$50/Month</label>
+              <p id="helper-radio-text" class="text-xs font-normal text-gray-500">Sponsor Two Children</p>
+          </div>
+        </div>
+        
+        <div class="flex mb-4">
+          <div class="flex items-center h-5">
+              <input bind:group={sponsorPlan} value={plans.sponsor100} id="helper-radio-3" name="radio" aria-describedby="helper-radio-text" type="radio"
+              class="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+          </div>
+          <div class="ml-2 text-sm">
+              <label for="helper-radio-3" class="font-medium text-lg text-gray-900 cursor-pointer">$100/Month</label>
+              <p id="helper-radio-text" class="text-xs font-normal text-gray-500">Sponsor Four Children</p>
+          </div>
+        </div>
+        
+        <div class="flex mb-4">
+          <div class="flex items-center h-5">
+              <input bind:group={sponsorPlan} value={plans.sponsorOther} id="helper-radio-4" name="radio" aria-describedby="helper-radio-text" type="radio"
+              class="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+          </div>
+          <div class="ml-2 text-sm">
+              <label for="helper-radio-4" class="font-medium text-lg text-gray-900 cursor-pointer">Other Amount</label>
+              <p id="helper-radio-text" class="text-xs font-normal text-gray-500">Choose how much you want to donate each month</p>
+          </div>
+        </div>
+      </div>
+    {/if}
+
+    {#if !monthly}
+    <div class="flex flex-col w-60 mx-auto" in:fade={{duration: 150}}>
+      <p class="text-center mb-4">Choose an amount to donate today</p>
+
+      <div class="flex mb-4">
+        <div class="flex items-center h-5">
+            <input bind:group={oneTimePlan} value={plans.oneTime50} checked id="helper-radio-1" name="radio" aria-describedby="helper-radio-text" type="radio"
+            class="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+        </div>
+        <div class="ml-2 text-sm">
+            <label for="helper-radio-1" class="font-medium text-lg text-gray-900 cursor-pointer">$50 Donation</label>
+            <p id="helper-radio-text" class="text-xs font-normal text-gray-500">Equivalent of 50 meals</p>
+        </div>
+      </div>
+
+      <div class="flex mb-4">
+        <div class="flex items-center h-5">
+            <input bind:group={oneTimePlan} value={plans.oneTime100} id="helper-radio-2" name="radio" aria-describedby="helper-radio-text" type="radio"
+            class="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+        </div>
+        <div class="ml-2 text-sm">
+            <label for="helper-radio-2" class="font-medium text-lg text-gray-900 cursor-pointer">$100 Donation</label>
+            <p id="helper-radio-text" class="text-xs font-normal text-gray-500">One month salary for a teacher</p>
+        </div>
+      </div>
+      
+      <div class="flex mb-4">
+        <div class="flex items-center h-5">
+            <input bind:group={oneTimePlan} value={plans.oneTime200} id="helper-radio-3" name="radio" aria-describedby="helper-radio-text" type="radio"
+            class="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+        </div>
+        <div class="ml-2 text-sm">
+            <label for="helper-radio-3" class="font-medium text-lg text-gray-900 cursor-pointer">$200 Donation</label>
+            <p id="helper-radio-text" class="text-xs font-normal text-gray-500">Equivalent to the budget for a school trip</p>
+        </div>
+      </div>
+      
+      <div class="flex mb-4">
+        <div class="flex items-center h-5">
+            <input bind:group={oneTimePlan} value={plans.oneTimeOther} id="helper-radio-4" name="radio" aria-describedby="helper-radio-text" type="radio"
+            class="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+        </div>
+        <div class="ml-2 text-sm">
+            <label for="helper-radio-4" class="font-medium text-lg text-gray-900 cursor-pointer">Other Amount</label>
+            <p id="helper-radio-text" class="text-xs font-normal text-gray-500">Custom Donation</p>
+        </div>
+      </div>
+    </div>
+    {/if}
+
+    <div class="flex flex-col mx-auto">
+      {#if monthly}
+        <PaymentButton url={sponsorPlan?.url} text={sponsorPlan?.buttonText} />
+      {/if}
+      {#if !monthly}
+        <PaymentButton url={oneTimePlan?.url} text={oneTimePlan?.buttonText} />
+      {/if}
+      <span class="text-xs text-center">Clicking on this button will redirect you <br> to a secured PayPal checkout page</span>
+    </div>
+
+
+  </div>
 </div>
 
-<!-- <button class="px-4 py-2 text-white bg-orange-500 rounded font-bold" 
-  on:click={() => {selectedPlan = plans.sponsor25}}>$25
-</button>
-<button class="px-4 py-2 text-white bg-orange-500 rounded font-bold" 
-  on:click={() => {selectedPlan = plans.sponsor50}}>$50
-</button>
-<button class="px-4 py-2 text-white bg-orange-500 rounded font-bold" 
-  on:click={() => {selectedPlan = plans.sponsor100}}>$100
-</button>
-<button class="px-4 py-2 text-white bg-orange-500 rounded font-bold" 
-  on:click={() => {selectedPlan = plans.sponsorOther}}>Other
-</button>
 
-<button class="px-4 py-2 text-white bg-orange-500 rounded font-bold" 
-  on:click={() => {selectedPlan = plans.donate50}}>$50
-</button>
-<button class="px-4 py-2 text-white bg-orange-500 rounded font-bold" 
-  on:click={() => {selectedPlan = plans.donate100}}>$100
-</button>
-<button class="px-4 py-2 text-white bg-orange-500 rounded font-bold" 
-  on:click={() => {selectedPlan = plans.donate200}}>$200
-</button>
-<button class="px-4 py-2 text-white bg-orange-500 rounded font-bold" 
-  on:click={() => {selectedPlan = plans.donateOther}}>Other
-</button>
-
-{#if selectedPlan}
-  <PaymentButton url={selectedPlan?.url} text={selectedPlan?.buttonText} />
-{/if} -->
 
 <!-- Unsubscribe -->
 <!-- https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=3CRDDM2YCKNEN -->

@@ -4,20 +4,24 @@
 
   export let data
 
+  // console.log(data.images.array[0])
+  // console.log(data.body)
   let paragraphs = data.body.split('\n\n')
-  console.log(paragraphs.length)
+  let pictures = data.images.array
+  // console.log('Paragraph Length: ' + paragraphs.length)
+  // console.log(images[0])
 
-  let pictures = []
-  pictures.push(data.secondary_img)
-  pictures.push(data.tertiary_img)
+  // let pictures = data.tertiary_img
+  // pictures.push(data.secondary_img)
+  // pictures.push(data.tertiary_img)
 
   let sections = []
 
   for (let i = 0; i < paragraphs.length; i++) {
     if (paragraphs.length == 1) {
       sections.push({ text: paragraphs[i] })
-      sections.push({ img: pictures[0] })
-      sections.push({ img: pictures[1] })
+      sections.push({ img: pictures[0].url })
+      sections.push({ img: pictures[1].url })
       break
     }
     sections.push({ text: paragraphs[i] })

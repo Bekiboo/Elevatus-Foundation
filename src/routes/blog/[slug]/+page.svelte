@@ -5,7 +5,7 @@
   export let data
 
   // console.log(data.images.array[0])
-  // console.log(data.body)
+  console.log(data.author)
   let paragraphs = data.body.split('\n\n')
   let pictures = data.images.array
   // console.log('Paragraph Length: ' + paragraphs.length)
@@ -35,7 +35,7 @@
   }
 
   const hero = {
-    src: data.primary_img,
+    src: data.images.array[0].url,
     alt: 'Under Construction',
     title: data.title,
     subtitle: data.caption,
@@ -53,10 +53,11 @@
   <div class="flex justify-between">
     <a href="/blog">&larr; Back to the Blog</a>
     <div class="flex flex-col">
-      {#if data.author}
-        <div>By {data?.author}</div>
+      {#if data.author.firstName}
+        <div>By {data.author.firstName} {data.author.lastName}</div>
+        <div class="text-sm">{data.author.title}</div>
       {/if}
-      <div>{getDate(data.created_at)}</div>
+      <div class="text-sm">{getDate(data.created_at)}</div>
     </div>
   </div>
   {#each sections as section, index}

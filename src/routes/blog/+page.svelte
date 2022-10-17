@@ -36,7 +36,7 @@
           >
             <img
               class="object-cover w-full h-96 md:w-full"
-              src={blogPost.primary_img}
+              src={blogPost.images.array[0].url}
               alt={blogPost.title}
             />
           </a>
@@ -73,7 +73,7 @@
             >
               <img
                 class="object-cover w-full h-96 md:h-auto md:w-full"
-                src={blogPost.primary_img}
+                src={blogPost.images.array[0].url}
                 alt={blogPost.title}
               />
             </a>

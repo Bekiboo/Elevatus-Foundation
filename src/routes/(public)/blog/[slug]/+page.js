@@ -1,5 +1,5 @@
-import { supabase } from '$lib/api/supabase'
-import { error } from '@sveltejs/kit'
+import { supabaseClient } from '$lib/db/supabase'
+// import { error } from '@sveltejs/kit'
 import { blogPosts } from '../store'
 
 let blogPostsValue
@@ -13,7 +13,7 @@ export async function load({ params }) {
 
   // If the blogPosts store is empty, then fetch the blog post from DB
   if (blogPostsValue == '') {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from(`blog-post`)
       .select()
       .eq('id', slug)

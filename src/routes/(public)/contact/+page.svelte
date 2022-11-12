@@ -1,5 +1,9 @@
 <script>
+  // import { enhance, applyAction } from '$app/forms'
+  import toast from 'svelte-french-toast'
   import Hero from '$lib/components/Hero.svelte'
+  import { page } from '$app/stores'
+  // import { invalidateAll } from '$app/navigation'
 
   const hero = {
     src: 'img/hero/contact.jpg',
@@ -7,16 +11,53 @@
     title: 'Contact Us',
     subtitle: 'Leave a message, and we will try to answer within a week',
   }
+
+  export let form
+  let errors
+
+  async function fetchData(data, that) {
+    return new Promise((resolve, reject) => {
+      const response = fetch(that.action, {
+        method: 'POST',
+        body: data,
+      })
+      response.then(async (res) => {
+        const result = await res.json()
+        if (result.type === 'invalid') {
+          console.log(result)
+          errors = result.data.errors
+          reject()
+        }
+        if (result.type === 'success') {
+          errors = []
+          that.reset()
+          resolve()
+        }
+      })
+    })
+  }
+
+  async function handleSubmit(event) {
+    const data = new FormData(this)
+    toast.promise(fetchData(data, this), {
+      loading: 'Sending...',
+      success: "Message sent successfully!\nWe'll get back to you soon",
+      error: 'Something went wrong',
+    })
+  }
 </script>
 
 <svelte:head>
   <title>Elevatus | Conctact Us</title>
-  <html lang="en-GB" />
 </svelte:head>
 
 <Hero {...hero} />
 
-<form method="POST" class="container max-w-2xl py-16">
+<form
+  method="POST"
+  class="container max-w-2xl py-16"
+  on:submit|preventDefault={handleSubmit}
+>
   <div class="grid md:grid-cols-2 md:gap-6">
     <div class="relative z-0 mb-6 w-full group">
       <input
@@ -29,7 +70,7 @@
       />
       <label
         for="first_name"
-        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7"
         >First name</label
       >
     </div>
@@ -44,7 +85,7 @@
       />
       <label
         for="last_name"
-        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7"
         >Last name</label
       >
     </div>
@@ -59,7 +100,7 @@
     />
     <label
       for="company"
-      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7"
       >Company (optional)</label
     >
   </div>
@@ -74,7 +115,7 @@
     />
     <label
       for="email"
-      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7"
       >Email address</label
     >
   </div>
@@ -91,6 +132,10 @@
     placeholder="Leave a comment..."
     required
   />
+
+  {#if errors?.message}
+    <div class="text-red-500">{errors?.message[0]}</div>
+  {/if}
 
   <button
     class="text-white bg-orange-500 hover:bg-orange-400 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 mt-4 py-2.5 text-center"

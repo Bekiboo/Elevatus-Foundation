@@ -7,7 +7,6 @@
 
 <svelte:head>
   <title>Elevatus | Home Page</title>
-  <html lang="en-GB" />
 </svelte:head>
 
 <Header />

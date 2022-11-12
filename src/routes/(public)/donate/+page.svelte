@@ -53,7 +53,6 @@
 
 <svelte:head>
   <title>Elevatus | Donate</title>
-  <html lang="en-GB" />
 </svelte:head>
 
 <Hero {...hero} />

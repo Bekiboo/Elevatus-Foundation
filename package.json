@@ -20,7 +20,10 @@
 	"type": "module",
 	"dependencies": {
 		"@sendgrid/mail": "^7.7.0",
-		"@supabase/supabase-js": "^1.35.6",
-		"dateformat": "^5.0.3"
+		"@supabase/auth-helpers-sveltekit": "^0.8.5",
+		"@supabase/supabase-js": "^2.0.5",
+		"dateformat": "^5.0.3",
+		"svelte-french-toast": "^1.0.3",
+		"zod": "^3.19.1"
 	}
 }

@@ -10,8 +10,7 @@
 </script>
 
 <svelte:head>
-  <title>Elevatus | Conctact Us</title>
-  <html lang="en-GB" />
+  <title>Elevatus | Compeleted</title>
 </svelte:head>
 
 <Hero {...hero} />

@@ -44,7 +44,6 @@
 
 <svelte:head>
   <title>Elevatus | Blog</title>
-  <html lang="en-GB" />
 </svelte:head>
 
 <Hero {...hero} />

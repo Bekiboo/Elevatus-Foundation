@@ -46,7 +46,7 @@
   class="fixed flex gap-2 right-2 z-50 h-{navBarHeight} items-center sm:hidden"
 >
   <!-- Donate Button Mobile -->
-  <div class="z-50 mr-2" on:click={closeNav}>
+  <div class="z-50 mr-2" on:click={closeNav} on:keydown={{closeNav}}>
     <a href="/donate"><Button><p class="py-1 px-2">Donate</p></Button></a>
   </div>
 
@@ -91,6 +91,7 @@
         src="../img/icons/Phoenix-white-stroke-thin.png"
         alt="Elevatus Logo"
         on:click={closeNav}
+        on:keydown={closeNav}
       />
       <p
         class="text-white font-semibold text-sm -ml-1 mt-2 text-center line leading-4"

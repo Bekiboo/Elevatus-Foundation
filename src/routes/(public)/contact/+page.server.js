@@ -1,5 +1,5 @@
 import sgMail from '@sendgrid/mail'
-import { invalid, redirect } from '@sveltejs/kit'
+import { invalid } from '@sveltejs/kit'
 import { z } from 'zod'
 
 const registerSchema = z.object({
@@ -78,6 +78,8 @@ export const actions = {
         return invalid(400, {
           error: true,
           message: 'Something went wrong\nTry again later',
+          apiKey: import.meta.env.VITE_PRIVATE_SENDGRID_API_KEY,
+          errorMsg: error
         })
       })
   },

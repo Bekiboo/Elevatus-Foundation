@@ -1,3 +1,4 @@
+import { enhance } from '$app/forms'
 import { supabaseClient } from '$lib/db/supabase'
 // import { error } from '@sveltejs/kit'
 import { blogPosts } from '../store'
@@ -27,3 +28,7 @@ export async function load({ params }) {
     return blogPost
   }
 }
+
+// A bit out of context comment here:
+// After a full day of struggle, I finally implemented the svelte-french-toast => toast.promise when submitting a form (to have a "loading" toast followed by a "success" or "failure" toast.
+// The problem is that when using use:enhance, it doesn't return a promise you can use, and so I had to get rid of use:enhance and do it the old way by calling fetch in my script tags.

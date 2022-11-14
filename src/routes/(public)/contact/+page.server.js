@@ -52,7 +52,7 @@ export const actions = {
       })
     }
 
-    sgMail.setApiKey(import.meta.env.VITE_PRIVATE_SENDGRID_API_KEY)
+    sgMail.setApiKey(process.env.VITE_PRIVATE_SENDGRID_API_KEY)
     const msg = {
       to: 'correspondence.elevatus@gmail.com',
       from: 'correspondence.elevatus@gmail.com',

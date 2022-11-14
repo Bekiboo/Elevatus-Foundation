@@ -4,6 +4,7 @@
   import Hero from '$lib/components/Hero.svelte'
   import { page } from '$app/stores'
   // import { invalidateAll } from '$app/navigation'
+	import { onMount } from 'svelte';
 
   const hero = {
     src: 'img/hero/contact.jpg',
@@ -14,6 +15,12 @@
 
   export let form
   let errors
+
+  onMount(() => {
+		window.onunhandledrejection = (e) => {
+		  console.log('we got exception, but the app has crashed', e);
+		}
+	})
 
   async function fetchData(data, that) {
     return new Promise((resolve, reject) => {

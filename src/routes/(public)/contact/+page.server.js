@@ -1,17 +1,18 @@
+import { dev } from '$app/environment'
 import sgMail from '@sendgrid/mail'
 import { invalid } from '@sveltejs/kit'
 import { z } from 'zod'
 
 const registerSchema = z.object({
   first_name: z
-    .string({ required_error: 'First Name is required' })
-    .min(1, { message: 'First Name is required' })
-    .max(64, { message: 'First Name must be less than 64 characters' })
+    .string({ required_error: 'First name is required' })
+    .min(1, { message: 'First name is required' })
+    .max(64, { message: 'First name must be less than 64 characters' })
     .trim(),
   last_name: z
-    .string({ required_error: 'Last Name is required' })
-    .min(1, { message: 'Last Name is required' })
-    .max(64, { message: 'Last Name must be less than 64 characters' })
+    .string({ required_error: 'Last name is required' })
+    .min(1, { message: 'Last name is required' })
+    .max(64, { message: 'Last name must be less than 64 characters' })
     .trim(),
   email: z
     .string({ required_error: 'Email is required' })
@@ -52,7 +53,12 @@ export const actions = {
       })
     }
 
-    sgMail.setApiKey(process.env.VITE_PRIVATE_SENDGRID_API_KEY)
+    let apiKey
+    dev
+      ? (apiKey = import.meta.env.VITE_PRIVATE_SENDGRID_API_KEY)
+      : (apiKey = process.env.VITE_PRIVATE_SENDGRID_API_KEY)
+
+    sgMail.setApiKey(import.meta.env.VITE_PRIVATE_SENDGRID_API_KEY)
     const msg = {
       to: 'correspondence.elevatus@gmail.com',
       from: 'correspondence.elevatus@gmail.com',
@@ -79,7 +85,7 @@ export const actions = {
           error: true,
           message: 'Something went wrong\nTry again later',
           apiKey: import.meta.env.VITE_PRIVATE_SENDGRID_API_KEY,
-          errorMsg: error
+          errorMsg: error,
         })
       })
   },

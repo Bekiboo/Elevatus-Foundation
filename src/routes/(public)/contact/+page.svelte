@@ -1,10 +1,7 @@
 <script>
-  // import { enhance, applyAction } from '$app/forms'
   import toast from 'svelte-french-toast'
   import Hero from '$lib/components/Hero.svelte'
-  import { page } from '$app/stores'
   // import { invalidateAll } from '$app/navigation'
-	import { onMount } from 'svelte';
 
   const hero = {
     src: 'img/hero/contact.jpg',
@@ -15,12 +12,6 @@
 
   export let form
   let errors
-
-  onMount(() => {
-		window.onunhandledrejection = (e) => {
-		  console.log('we got exception, but the app has crashed', e);
-		}
-	})
 
   async function fetchData(data, that) {
     return new Promise((resolve, reject) => {
@@ -73,13 +64,15 @@
         id="first_name"
         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-500 peer"
         placeholder=" "
-        required
       />
       <label
         for="first_name"
         class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7"
         >First name</label
       >
+      {#if errors?.first_name}
+        <div class="text-red-500">{errors?.first_name[0]}</div>
+      {/if}
     </div>
     <div class="relative z-0 mb-6 w-full group">
       <input
@@ -88,13 +81,15 @@
         id="last_name"
         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-500 peer"
         placeholder=" "
-        required
       />
       <label
         for="last_name"
         class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7"
         >Last name</label
       >
+      {#if errors?.last_name}
+        <div class="text-red-500">{errors?.last_name[0]}</div>
+      {/if}
     </div>
   </div>
   <div class="relative z-0 mb-6 w-full group">
@@ -110,6 +105,9 @@
       class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7"
       >Company (optional)</label
     >
+    {#if errors?.company}
+      <div class="text-red-500">{errors?.company[0]}</div>
+    {/if}
   </div>
   <div class="relative z-0 mb-6 w-full group">
     <input
@@ -118,13 +116,15 @@
       id="email"
       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-500 peer"
       placeholder=" "
-      required
     />
     <label
       for="email"
       class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-orange-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7"
       >Email address</label
     >
+    {#if errors?.email}
+      <div class="text-red-500">{errors?.email[0]}</div>
+    {/if}
   </div>
 
   <label for="message" class="block mb-2 text-sm font-medium text-gray-900"
@@ -137,7 +137,6 @@
     rows="4"
     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500"
     placeholder="Leave a comment..."
-    required
   />
 
   {#if errors?.message}

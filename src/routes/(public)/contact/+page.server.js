@@ -53,10 +53,10 @@ export const actions = {
       })
     }
 
-    let apiKey
-    dev
-      ? (apiKey = import.meta.env.VITE_PRIVATE_SENDGRID_API_KEY)
-      : (apiKey = process.env.VITE_PRIVATE_SENDGRID_API_KEY)
+    // let apiKey
+    // dev
+    //   ? (apiKey = import.meta.env.VITE_PRIVATE_SENDGRID_API_KEY)
+    //   : (apiKey = process.env.VITE_PRIVATE_SENDGRID_API_KEY)
 
     sgMail.setApiKey(import.meta.env.VITE_PRIVATE_SENDGRID_API_KEY)
     const msg = {

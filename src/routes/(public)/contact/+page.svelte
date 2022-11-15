@@ -55,6 +55,7 @@
   method="POST"
   class="container max-w-2xl py-16"
   on:submit|preventDefault={handleSubmit}
+  novalidate
 >
   <div class="grid md:grid-cols-2 md:gap-6">
     <div class="relative z-0 mb-6 w-full group">
@@ -64,6 +65,7 @@
         id="first_name"
         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-500 peer"
         placeholder=" "
+        required
       />
       <label
         for="first_name"
@@ -81,6 +83,7 @@
         id="last_name"
         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-500 peer"
         placeholder=" "
+        required
       />
       <label
         for="last_name"
@@ -116,6 +119,7 @@
       id="email"
       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-500 peer"
       placeholder=" "
+      required
     />
     <label
       for="email"
@@ -137,6 +141,7 @@
     rows="4"
     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500"
     placeholder="Leave a comment..."
+    required
   />
 
   {#if errors?.message}

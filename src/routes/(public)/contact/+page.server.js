@@ -26,8 +26,8 @@ const registerSchema = z.object({
     .trim(),
   message: z
     .string({ required_error: 'You must include a message' })
-    .min(4, { message: 'You must include a message' })
-    .max(1000, { message: 'The message must be less than 1000 characters' })
+    .min(10, { message: 'Your message must be at least 10 characters long' })
+    .max(2000, { message: 'The message must be less than 2000 characters' })
     .trim(),
 })
 

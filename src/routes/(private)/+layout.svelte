@@ -19,7 +19,8 @@
   })
 </script>
 
-<!-- {#if !$page.data.session}
+<!-- 
+{#if !$page.data.session}
 <h1>I am not logged in</h1>
 {:else}
 <h1>{JSON.stringify($page.data.session)}</h1>

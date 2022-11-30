@@ -64,7 +64,7 @@
   </div>
   <hr class="my-6 sm:mx-auto border-gray-700 lg:my-8" />
   <span class="block text-sm sm:text-center"
-    >© {currentYear} <a href="https://flowbite.com/" class="hover:underline">Elevatus Foundation</a
+    >© {currentYear} <a href="/" class="hover:underline">Elevatus Foundation</a
     >. All Rights Reserved.
   </span>
 </footer>

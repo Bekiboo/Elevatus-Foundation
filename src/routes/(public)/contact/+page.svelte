@@ -1,7 +1,8 @@
 <script>
   import toast from 'svelte-french-toast'
-  import Hero from '$lib/components/Hero.svelte'
-  // import { invalidateAll } from '$app/navigation'
+  import Hero from '$lib/components/Public/Hero.svelte'
+  import { enhance, applyAction } from '$app/forms'
+  import { loadingState } from '$lib/stores'
 
   const hero = {
     src: 'img/hero/contact.jpg',
@@ -10,39 +11,9 @@
     subtitle: 'Leave a message, and we will try to answer within a week',
   }
 
-  export let form
+  // export let form // ?
+
   let errors
-
-  async function fetchData(data, that) {
-    return new Promise((resolve, reject) => {
-      const response = fetch(that.action, {
-        method: 'POST',
-        body: data,
-      })
-      response.then(async (res) => {
-        const result = await res.json()
-        if (result.type === 'invalid') {
-          console.log(result)
-          errors = result.data.errors
-          reject()
-        }
-        if (result.type === 'success') {
-          errors = []
-          that.reset()
-          resolve()
-        }
-      })
-    })
-  }
-
-  async function handleSubmit(event) {
-    const data = new FormData(this)
-    toast.promise(fetchData(data, this), {
-      loading: 'Sending...',
-      success: "Message sent successfully!\nWe'll get back to you soon",
-      error: 'Something went wrong',
-    })
-  }
 </script>
 
 <svelte:head>
@@ -54,7 +25,27 @@
 <form
   method="POST"
   class="container max-w-2xl py-16"
-  on:submit|preventDefault={handleSubmit}
+  use:enhance={() => {
+    loadingState.set(true)
+    return async ({ result, update }) => {
+      loadingState.set(false)
+
+      if (result.type === 'invalid') {
+        errors = result.data.errors
+        toast.error(result.data.message, {
+          duration: 5000,
+          style: 'margin-top: 4rem',
+        })
+        return await applyAction(result)
+      }
+      errors = []
+      toast.success("Message sent successfully!\nWe'll get back to you soon", {
+        duration: 5000,
+        style: 'margin-top: 4rem',
+      })
+      update()
+    }
+  }}
   novalidate
 >
   <div class="grid md:grid-cols-2 md:gap-6">

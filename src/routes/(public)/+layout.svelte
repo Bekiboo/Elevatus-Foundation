@@ -1,16 +1,18 @@
 <script>
-  import Nav from '$lib/components/Header/Nav.svelte'
-  import Footer from '$lib/components/Footer.svelte'
-  import { Toaster } from 'svelte-french-toast'
-
+  import Nav from '$lib/components/Public/Header/Nav.svelte'
+  import Footer from '$lib/components/Public/Footer.svelte'
+  import { page } from '$app/stores'
 </script>
 
 <Nav />
 
-<Toaster />
 
 <main class="mx-auto min-h-[80vh]">
-  <slot />
+  {#if !$page.error}
+    <slot />
+  {:else}
+    <div>An error occured</div>
+  {/if}
 </main>
 
 <Footer />

@@ -10,7 +10,7 @@
     >
   </div>
   <div>
-    <a href="/admin" class="font-medium text-primary-600 hover:underline"
+    <a href="/dashboard/admin" class="font-medium text-primary-600 hover:underline"
       >Admin</a
     >
   </div>

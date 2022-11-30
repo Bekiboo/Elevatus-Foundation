@@ -1,6 +1,6 @@
-import { dev } from '$app/environment'
-import sgMail from '@sendgrid/mail'
+// import { dev } from '$app/environment'
 import { invalid } from '@sveltejs/kit'
+import sgMail from '@sendgrid/mail'
 import { z } from 'zod'
 
 const registerSchema = z.object({
@@ -47,7 +47,7 @@ export const actions = {
       console.log(errors)
       return invalid(400, {
         error: true,
-        message: 'Something went wrong\nTry again later',
+        message: 'Invalid form\nCheck the fields',
         data: formData,
         errors,
       })
@@ -84,7 +84,7 @@ export const actions = {
         return invalid(400, {
           error: true,
           message: 'Something went wrong\nTry again later',
-          apiKey: import.meta.env.VITE_PRIVATE_SENDGRID_API_KEY,
+          // apiKey: import.meta.env.VITE_PRIVATE_SENDGRID_API_KEY,
           errorMsg: error,
         })
       })

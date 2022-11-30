@@ -1,14 +1,38 @@
 import { invalid, redirect } from '@sveltejs/kit'
 import { getSupabase } from '@supabase/auth-helpers-sveltekit'
+import { z } from 'zod'
+
+const registerSchema = z.object({
+  email: z
+    .string({ required_error: 'Email is required' })
+    .min(1, { message: 'Email is required' })
+    .email({ message: 'Email must be a valid email address' }),
+  password: z
+    .string({ required_error: 'Password is required' })
+    .min(1, { message: 'Passord is required' })
+    .trim(),
+})
 
 export const actions = {
   signIn: async (event) => {
     const { request, cookies, url } = event
     const { session, supabaseClient } = await getSupabase(event)
-    const formData = await request.formData()
+    const formData = Object.fromEntries(await request.formData())
+    const email = formData.email
+    const password = formData.password
 
-    const email = formData.get('email')
-    const password = formData.get('password')
+    // Form Validation
+    try {
+      const result = registerSchema.parse(formData)
+    } catch (err) {
+      const { fieldErrors: errors } = err.flatten()
+      return invalid(400, {
+        error: true,
+        message: 'Invalid form\nCheck the fields',
+        data: formData,
+        errors,
+      })
+    }
 
     const { error } = await supabaseClient.auth.signInWithPassword({
       email,
@@ -16,9 +40,10 @@ export const actions = {
     })
 
     if (error) {
-      if (error instanceof AuthApiError && error.status === 400) {
+      if (error && error.status === 400) {
         return invalid(400, {
-          error: 'Invalid credentials.',
+          error: true,
+          message: 'Invalid credentials',
           values: {
             email,
           },
@@ -32,7 +57,7 @@ export const actions = {
       })
     }
 
-    throw redirect(303, '/hub')
+    throw redirect(303, '/dashboard')
   },
 
   signOut: async (event) => {

@@ -1,9 +1,9 @@
 <script>
   import { onMount } from 'svelte'
-  import NavLinks from '$lib/components/Header/NavLinks.svelte'
-  import Button from '$lib/components/Button.svelte'
-  import Hamburger from '$lib/components/Header/Hamburger.svelte'
-  import SideNav from '$lib/components/Header/SideNav.svelte'
+  import NavLinks from '$lib/components/Public/Header/NavLinks.svelte'
+  import Button from '$lib/components/Public/Button.svelte'
+  import Hamburger from '$lib/components/Public/Header/Hamburger.svelte'
+  import SideNav from '$lib/components/Public/Header/SideNav.svelte'
   // import Auth from '$lib/auth/Auth.svelte'
   // import UserMobile from './UserMobile.svelte'
 
@@ -75,30 +75,14 @@
     class="flex pl-2 h-{navBarHeight} justify-between sm:justify-around backdrop-blur duration-300
     {transparent ? 'bg-transparent backdrop-blur-none' : 'bg-honey/90'}"
   >
-    <!-- Desktop Logo -->
-    <a href="/home" class="hidden sm:block"
+    <!-- Logo -->
+    <a href="/home" class="block"
       ><img
         class="h-14 mt-2 -translate-y-1"
         src="../img/icons/white_logo.png"
         alt="Elevatus Logo"
       /></a
     >
-
-    <!-- Mobile Logo -->
-    <a href="/home" class="sm:hidden flex items-center"
-      ><img
-        class="h-12 mt-2 ml-2 -translate-y-1 z-50"
-        src="../img/icons/Phoenix-white-stroke-thin.png"
-        alt="Elevatus Logo"
-        on:click={closeNav}
-        on:keydown={closeNav}
-      />
-      <p
-        class="text-white font-semibold text-sm -ml-1 mt-2 text-center line leading-4"
-      >
-        Elevatus <br /> Foundation
-      </p>
-    </a>
 
     <div class="flex items-center gap-2 mr-12">
       <nav class="navbar-center flex">

@@ -6,7 +6,7 @@ export const load = async (event) => {
   const session = await getServerSession(event)
 
   const { data, error } = await supabaseClient
-    .from('profiles')
+    .from('profile')
     .select(`email, role!inner(*)`)
     .eq('id', session.user?.id)
 

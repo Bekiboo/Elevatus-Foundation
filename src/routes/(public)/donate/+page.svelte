@@ -1,5 +1,5 @@
 <script>
-  import Hero from '$lib/components/Hero.svelte'
+  import Hero from '$lib/components/Public/Hero.svelte'
   import { fade } from 'svelte/transition'
   import PaymentButton from './PaymentButton.svelte'
 

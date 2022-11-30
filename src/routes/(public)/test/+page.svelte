@@ -1,5 +1,6 @@
 <script>
-  import Hero from '$lib/components/Hero.svelte'
+  import Hero from '$lib/components/Public/Hero.svelte'
+  import { supabaseClient } from '$lib/db/supabase'
 
   export let data
 
@@ -9,6 +10,19 @@
     title: 'Our Test',
     subtitle: 'Dedicated and Passionate',
   }
+
+  async function handleSignUp() {
+    try {
+      const { data, error } = await supabaseClient.auth.signUp({
+        email: 'example@email.com',
+        password: 'example-password',
+      })
+      
+      if (error) console.log(error);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 </script>
 
 <svelte:head>
@@ -16,3 +30,5 @@
 </svelte:head>
 
 <Hero {...hero} />
+
+<button on:click={handleSignUp}>Sign Up</button>

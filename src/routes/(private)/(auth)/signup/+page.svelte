@@ -2,7 +2,6 @@
   import toast from 'svelte-french-toast'
   import { enhance, applyAction } from '$app/forms'
   import { loadingState } from '$lib/stores'
-  import { regisrating } from '$lib/stores'
 
   let email
   let errors
@@ -52,7 +51,6 @@
             return await applyAction(result)
           }
           errors = []
-          regisrating.set({ status: true, email: email })
           toast.success('Registration succeed!', {
             duration: 5000,
             style: 'margin-top: 4rem',

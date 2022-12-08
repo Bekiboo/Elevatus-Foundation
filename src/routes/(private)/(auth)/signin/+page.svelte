@@ -8,7 +8,7 @@
 
 <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
   <img
-    class="h-24 mt-2 ml-2 -translate-y-1 z-50"
+    class="h-24 mt-2 ml-2 -translate-y-1"
     src="../img/icons/white_logo.png"
     alt="Elevatus Logo"
   />

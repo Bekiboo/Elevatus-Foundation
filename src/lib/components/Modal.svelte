@@ -45,7 +45,6 @@
 
 <div class="modal" role="dialog" aria-modal="true" bind:this={modal}>
   <!-- svelte-ignore a11y-autofocus -->
-  <button autofocus on:click={close}>&#10060;</button>
   <slot name="header" />
   <!-- <hr /> -->
   <slot />

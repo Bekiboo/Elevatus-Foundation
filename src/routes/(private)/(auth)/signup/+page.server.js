@@ -1,29 +1,7 @@
 import { invalid, redirect } from '@sveltejs/kit'
 import { getSupabase } from '@supabase/auth-helpers-sveltekit'
-import { z } from 'zod'
 import { regisrating } from '$lib/stores'
-
-const registerSchema = z.object({
-  email: z
-    .string({ required_error: 'Email is required' })
-    .min(1, { message: 'Email is required' })
-    .email({ message: 'Email must be a valid email address' }),
-  password: z
-    .string({ required_error: 'Password is required' })
-    // .min(8, { message: 'Password must be at least 8 characters' })
-    // .regex(new RegExp('.*[A-Z].*'), 'One uppercase character')
-    // .regex(new RegExp('.*[a-z].*'), 'One lowercase character')
-    // .regex(new RegExp('.*\\d.*'), 'One number')
-    // .regex(
-    //   new RegExp('.*[`~<>?,./!@#$%^&*()\\-_+="\'|{}\\[\\];:\\\\].*'),
-    //   'One special character'
-    // )
-    .trim(),
-  confirmPassword: z
-    .string({ required_error: 'Password confirmation is required' })
-    .min(1, { message: 'Password confirmation is required' })
-    .trim(),
-})
+import { RegisterUserSchema } from '$lib/validationSchema'
 
 export const actions = {
   signUp: async (event) => {
@@ -46,7 +24,11 @@ export const actions = {
 
     // Form Validation
     try {
-      const result = registerSchema.parse(formData)
+      RegisterUserSchema.parse({
+        email,
+        password,
+        confirmPassword,
+      })
     } catch (err) {
       const { fieldErrors: errors } = err.flatten()
       return invalid(400, {
@@ -72,16 +54,10 @@ export const actions = {
         data: formData,
       })
       // message = error.error_description || error.message
-    } 
-    console.log('1');
-    regisrating.set({status: true, email: email})
-    console.log('2');
+    }
+
+    await regisrating.set({ status: true, email: email })
+
     throw redirect(303, '/verification')
   },
 }
-
-// begin
-//   insert into public.profile (id, email, role, username, avatar_url)
-//   values (new.id, new.email, '1', new.raw_user_meta_data ->> 'user_name', new.raw_user_meta_data ->> 'avatar_url');
-//   return new;
-// end;

@@ -8,6 +8,7 @@
 		"preview": "vite preview"
 	},
 	"devDependencies": {
+		"@skeletonlabs/skeleton": "^0.76.3",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"autoprefixer": "^10.4.8",
@@ -21,6 +22,7 @@
 	"dependencies": {
 		"@sendgrid/mail": "^7.7.0",
 		"@supabase/auth-helpers-sveltekit": "^0.8.5",
+		"@supabase/gotrue-js": "^2.4.2",
 		"@supabase/supabase-js": "^2.0.5",
 		"dateformat": "^5.0.3",
 		"svelte-french-toast": "^1.0.3",

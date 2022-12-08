@@ -19,7 +19,7 @@
     icon: '👏'
 })
 
-    goto('/')
+    goto('/signin')
     // const { error } = await supabaseClient.auth.signOut()
     
   }

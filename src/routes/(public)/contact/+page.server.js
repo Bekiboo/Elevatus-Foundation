@@ -1,5 +1,5 @@
 // import { dev } from '$app/environment'
-import { invalid } from '@sveltejs/kit'
+import { fail } from '@sveltejs/kit'
 import sgMail from '@sendgrid/mail'
 import { z } from 'zod'
 
@@ -45,7 +45,7 @@ export const actions = {
     } catch (err) {
       const { fieldErrors: errors } = err.flatten()
       console.log(errors)
-      return invalid(400, {
+      return fail(400, {
         error: true,
         message: 'Invalid form\nCheck the fields',
         data: formData,
@@ -81,7 +81,7 @@ export const actions = {
       })
       .catch((error) => {
         console.error(error)
-        return invalid(400, {
+        return fail(400, {
           error: true,
           message: 'Something went wrong\nTry again later',
           // apiKey: import.meta.env.VITE_PRIVATE_SENDGRID_API_KEY,

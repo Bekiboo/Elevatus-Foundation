@@ -1,12 +1,5 @@
 module.exports = {
-  content: [
-    './src/**/*.{html,js,svelte,ts}',
-    require('path').join(
-      require.resolve('@skeletonlabs/skeleton'),
-      '../**/*.{html,js,svelte,ts}'
-    ),
-  ],
-  plugins: [require('@skeletonlabs/skeleton/tailwind/theme.cjs')],
+  content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     extend: {
       colors: {
@@ -23,9 +16,9 @@ module.exports = {
         smm: { max: '640px' },
         // => @media (max-width: 640px) { ... }
       },
-    },
-    fontFamily: {
-      Poppins: ['Poppins, sans-serif'],
+      fontFamily: {
+        Poppins: ['Poppins, sans-serif'],
+      },
     },
     container: {
       center: true,

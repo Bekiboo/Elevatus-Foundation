@@ -5,7 +5,6 @@
   import LoadingScreen from '$lib/components/LoadingScreen.svelte'
   import { loadingState } from '$lib/stores'
   import { Toaster } from 'svelte-french-toast'
-  // import '@skeletonlabs/skeleton/styles/all.css'
 
   let loading = false
   loadingState.subscribe((state) => (loading = state))

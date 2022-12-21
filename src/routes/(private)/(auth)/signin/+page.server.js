@@ -1,4 +1,4 @@
-import { invalid, redirect } from '@sveltejs/kit'
+import { fail, redirect } from '@sveltejs/kit'
 import { getSupabase } from '@supabase/auth-helpers-sveltekit'
 import { AuthUserSchema } from '$lib/validationSchema'
 import { ForgotPasswordSchema } from '$lib/validationSchema'
@@ -16,7 +16,7 @@ export const actions = {
       AuthUserSchema.parse({ email, password })
     } catch (err) {
       const { fieldErrors: errors } = err.flatten()
-      return invalid(400, {
+      return fail(400, {
         error: true,
         message: 'Invalid form\nCheck the fields',
         data: formData,
@@ -31,7 +31,7 @@ export const actions = {
 
     if (error) {
       if (error && error.status === 400) {
-        return invalid(400, {
+        return fail(400, {
           error: true,
           message: 'Invalid credentials',
           values: {
@@ -39,7 +39,7 @@ export const actions = {
           },
         })
       }
-      return invalid(500, {
+      return fail(500, {
         error: 'Server error. Try again later.',
         values: {
           email,
@@ -47,7 +47,7 @@ export const actions = {
       })
     }
 
-    throw redirect(303, '/dashboard')
+    throw redirect(303, '/portal')
   },
 
   signOut: async (event) => {
@@ -62,14 +62,12 @@ export const actions = {
     const formData = Object.fromEntries(await request.formData())
     const email = formData.email
 
-    console.log('EMAIL !!!!!!: ' + email);
-
     try {
       ForgotPasswordSchema.parse({ email })
     } catch (err) {
       console.log(err)
       const { fieldErrors: errors } = err.flatten()
-      return invalid(400, {
+      return fail(400, {
         error: true,
         message: 'Invalid form\nCheck the fields',
         data: formData,
@@ -85,18 +83,19 @@ export const actions = {
     )
 
     if (error) {
-      console.log(error)
       if (error && error.status === 400) {
-        return invalid(400, {
+        return fail(400, {
           error: true,
-          message: 'Something went wrong',
+          message: 'prout',
           values: {
             email,
           },
+          errors: auth,
         })
       }
-      return invalid(500, {
+      return fail(500, {
         error: 'Server error. Try again later.',
+        message: error.message,
         values: {
           email,
         },

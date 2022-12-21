@@ -4,11 +4,35 @@
   import { loadingState } from '$lib/stores'
   import { enhance, applyAction } from '$app/forms'
 
-  let showModal = true
+  let showModal = false
   function close() {
     showModal = false
   }
   let errors
+
+  const submitForm = ({ form }) => {
+    loadingState.set(true)
+    return async ({ result, update }) => {
+      loadingState.set(false)
+
+      if (result.type === 'failure') {
+        errors = result.data.errors
+
+        toast.error(result.data.message, {
+          duration: 5000,
+          style: 'margin-top: 4rem',
+        })
+        return await applyAction(result)
+      }
+      errors = []
+      toast.success('Check your email', {
+        duration: 5000,
+        style: 'margin-top: 4rem',
+      })
+      close()
+      update()
+    }
+  }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -34,32 +58,11 @@
       your password!
     </p>
 
-    <form class="mt-4"
+    <form
+      class="mt-4"
       method="POST"
       action="?/resetPassword"
-      use:enhance={() => {
-        loadingState.set(true)
-        return async ({ result, update }) => {
-          loadingState.set(false)
-
-          if (result.type === 'invalid') {
-            errors = result.data.errors
-
-            toast.error(result.data.message, {
-              duration: 5000,
-              style: 'margin-top: 4rem',
-            })
-            return await applyAction(result)
-          }
-          // errors = []
-          toast.success('Check your email', {
-            duration: 5000,
-            style: 'margin-top: 4rem',
-          })
-          showModal = false
-          update()
-        }
-      }}
+      use:enhance={submitForm}
       novalidate
     >
       <label for="email" class="block mb-2 text-sm font-medium text-gray-900"

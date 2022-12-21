@@ -29,14 +29,14 @@ export const ForgotPasswordSchema = z.object({
 export const UpdatePasswordSchema = z
   .object({
     password: password(8),
-    passwordConfirm: password(8, 'Confirm Password'),
+    confirmPassword: password(8, 'Confirm Password'),
   })
-  .superRefine(({ password, passwordConfirm }, ctx) => {
-    if (password !== passwordConfirm) {
+  .superRefine(({ password, confirmPassword }, ctx) => {
+    if (password !== confirmPassword) {
       ctx.addIssue({
         code: 'custom',
         message: 'Password does not match',
-        path: ['passwordConfirm'],
+        path: ['confirmPassword'],
       })
     }
   })

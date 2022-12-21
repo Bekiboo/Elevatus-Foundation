@@ -3,7 +3,31 @@
   import { enhance, applyAction } from '$app/forms'
   import { loadingState } from '$lib/stores'
   import ForgotPassword from './ForgotPassword.svelte'
+  
   let errors
+
+  const submitForm = ({ form }) => {
+    loadingState.set(true)
+    return async ({ result, update }) => {
+      loadingState.set(false)
+
+      if (result.type === 'failure') {
+        errors = result.data.errors
+
+        toast.error(result.data.message, {
+          duration: 5000,
+          style: 'margin-top: 4rem',
+        })
+        return await applyAction(result)
+      }
+      errors = []
+      toast.success('Welcome to the dashboard!', {
+        duration: 5000,
+        style: 'margin-top: 4rem',
+      })
+      update()
+    }
+  }
 </script>
 
 <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
@@ -25,28 +49,7 @@
       method="POST"
       class="space-y-4 md:space-y-6"
       action="?/signIn"
-      use:enhance={() => {
-        loadingState.set(true)
-        return async ({ result, update }) => {
-          loadingState.set(false)
-
-          if (result.type === 'invalid') {
-            errors = result.data.errors
-
-            toast.error(result.data.message, {
-              duration: 5000,
-              style: 'margin-top: 4rem',
-            })
-            return await applyAction(result)
-          }
-          errors = []
-          toast.success('Welcome to the dashboard!', {
-            duration: 5000,
-            style: 'margin-top: 4rem',
-          })
-          update()
-        }
-      }}
+      use:enhance={submitForm}
       novalidate
     >
       <div>
@@ -113,3 +116,4 @@
     </form>
   </div>
 </div>
+

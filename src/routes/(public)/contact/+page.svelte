@@ -11,26 +11,12 @@
     subtitle: 'Leave a message, and we will try to answer within a week',
   }
 
-  // export let form // ?
-
-  let errors
-</script>
-
-<svelte:head>
-  <title>Elevatus | Conctact Us</title>
-</svelte:head>
-
-<Hero {...hero} />
-
-<form
-  method="POST"
-  class="container max-w-2xl py-16"
-  use:enhance={() => {
+  const submitForm = ({ form }) => {
     loadingState.set(true)
     return async ({ result, update }) => {
       loadingState.set(false)
 
-      if (result.type === 'invalid') {
+      if (result.type === 'failure') {
         errors = result.data.errors
         toast.error(result.data.message, {
           duration: 5000,
@@ -45,7 +31,23 @@
       })
       update()
     }
-  }}
+  }
+
+  // export let form // ?
+
+  let errors
+</script>
+
+<svelte:head>
+  <title>Elevatus | Conctact Us</title>
+</svelte:head>
+
+<Hero {...hero} />
+
+<form
+  method="POST"
+  class="container max-w-2xl py-16"
+  use:enhance={submitForm}
   novalidate
 >
   <div class="grid md:grid-cols-2 md:gap-6">

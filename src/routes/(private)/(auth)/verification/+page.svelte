@@ -1,6 +1,6 @@
 <script>
-  import { regisrating } from '$lib/stores'
-  import { onDestroy } from 'svelte'
+  // import { regisrating } from '$lib/stores'
+  // import { onDestroy } from 'svelte'
 
   export let data
 

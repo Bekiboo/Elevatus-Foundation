@@ -7,6 +7,31 @@
   let errors
 
   export let form
+
+  const submitForm = ({ form }) => {
+    loadingState.set(true)
+    return async ({ result, update }) => {
+      console.log(result)
+
+      loadingState.set(false)
+
+      if (result.type === 'failure') {
+        errors = result.data.errors
+
+        toast.error(result.data.message, {
+          duration: 5000,
+          style: 'margin-top: 4rem',
+        })
+        return await applyAction(result)
+      }
+      errors = []
+      toast.success('Registration succeed!', {
+        duration: 5000,
+        style: 'margin-top: 4rem',
+      })
+      update()
+    }
+  }
 </script>
 
 <!-- <div>{message}</div> -->
@@ -34,30 +59,7 @@
       method="post"
       class="space-y-4 md:space-y-6"
       action="?/signUp"
-      use:enhance={() => {
-        loadingState.set(true)
-        return async ({ result, update }) => {
-          console.log(result)
-
-          loadingState.set(false)
-
-          if (result.type === 'invalid') {
-            errors = result.data.errors
-
-            toast.error(result.data.message, {
-              duration: 5000,
-              style: 'margin-top: 4rem',
-            })
-            return await applyAction(result)
-          }
-          errors = []
-          toast.success('Registration succeed!', {
-            duration: 5000,
-            style: 'margin-top: 4rem',
-          })
-          update()
-        }
-      }}
+      use:enhance={submitForm}
       novalidate
     >
       <div>

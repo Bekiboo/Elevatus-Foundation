@@ -3,8 +3,6 @@
   import dateformat from 'dateformat'
   import { blogPosts } from './store'
 
-  // export let data = []
-
   let blogPostList = []
   blogPosts.subscribe((list) => {
     blogPostList = list
@@ -37,8 +35,6 @@
 </svelte:head>
 
 <Hero {...hero} />
-
-<!-- {blogPostList[0].title} -->
 
 <section class="container min-h-[50vh]">
   <div class="w-full">

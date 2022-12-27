@@ -3,7 +3,7 @@
   import { supabaseClient } from '$lib/db/supabase'
   import { goto } from '$app/navigation'
   import toast from 'svelte-french-toast'
-  import UserSvg from '$lib/svg/icons/UserSvg.svelte'
+  // import UserSvg from '$lib/svg/icons/UserSvg.svelte'
   import DownArrowSvg from '$lib/svg/symbols/DownArrowSvg.svelte'
 
   export let role
@@ -58,7 +58,7 @@
 
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div on:click={openUserNav} class="flex items-center gap-1 cursor-pointer select-none">
-      <UserSvg size="2" />
+      <!-- <UserSvg size="2" /> -->
       <div class="text-sm">{role}</div>
       <DownArrowSvg size={1} />
     </div>

@@ -1,7 +1,7 @@
 <script>
   import BlogSvg from '$lib/svg/icons/BlogSvg.svelte'
   import DashboardSvg from '$lib/svg/icons/DashboardSvg.svelte'
-  import DonorsSvg from '$lib/svg/icons/DonorsSVG.svelte'
+  // import DonorsSvg from '$lib/svg/icons/DonorsSVG.svelte'
   import { adminMode } from '$lib/stores'
 
   export let role
@@ -68,7 +68,7 @@
             href="#"
             class="flex items-center p-2 text-base hover:text-white transition-all pointer-events-none"
           >
-            <DonorsSvg />
+            <!-- <DonorsSvg /> -->
             <img src="" alt="" />
             <span class="flex-1 ml-3 whitespace-nowrap">Donors</span>
           </a>

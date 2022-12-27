@@ -1,19 +1,19 @@
 <script>
-  import BlogSvg from '$lib/SVG/BlogSvg.svelte'
-  import DashboardSvg from '$lib/SVG/DashboardSvg.svelte'
-  import DonorsSvg from '../../../lib/SVG/DonorsSVG.svelte'
+  import BlogSvg from '$lib/svg/icons/BlogSvg.svelte'
+  import DashboardSvg from '$lib/svg/icons/DashboardSvg.svelte'
+  import DonorsSvg from '$lib/svg/icons/DonorsSVG.svelte'
   import { adminMode } from '$lib/stores'
 
   export let role
 </script>
 
-<aside class="w-64" aria-label="Sidebar">
-  <div class="overflow-y-auto py-4 px-3 bg-slate-800 h-screen">
+<aside aria-label="Sidebar">
+  <div class="overflow-y-auto w-64 py-4 px-3 bg-slate-800 h-screen">
     <!-- Logo -->
     <a href="/home"
       ><img
-        class="h-14 mx-auto mt-2 mb-4 -translate-y-1"
-        src="../img/icons/white_logo.png"
+        class="h-10 mx-auto mt-2 mb-4 -translate-y-1"
+        src="../../img/icons/white_logo.png"
         alt="Elevatus Logo"
       /></a
     >
@@ -40,7 +40,7 @@
     <!-- Links -->
     <ul class="space-y-2 text-slate-500">
       <!-- for ADMIN -->
-      {#if $adminMode}
+      {#if $adminMode && role === 'admin'}
         <li class="cursor-not-allowed">
           <a
             href="/portal/admin/dashboard"

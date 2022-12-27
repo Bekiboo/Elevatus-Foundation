@@ -1,5 +1,8 @@
+<script>
+  export let size = 1.5
+</script>
 <svg
-  class="w-10 h-10"
+  style="width:{size}rem;height:{size}rem"
   fill="none"
   stroke="currentColor"
   viewBox="0 0 24 24"

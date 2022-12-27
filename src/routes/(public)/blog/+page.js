@@ -9,13 +9,15 @@ blogPosts.subscribe((value) => {
 
 export const load = async () => {
   // If the blogPosts store is empty, then fetch blog posts from DB
+  console.log('BLOGPOSTSVALUE: ' + JSON.stringify(blogPostsValue));
   if (blogPostsValue == '') {
     const { data, error } = await supabaseClient.from('blog-post').select()
     if (error) return console.error('loadBlogPosts: ', error)
 
+    console.log(data);
     // Todo: sort by date rather than by id
     data.sort((a, b) => {
-      return a.id - b.id
+      return b.id - a.id
     })
 
     blogPosts.set(data)

@@ -8,7 +8,7 @@
 <div class="flex">
   <Sidebar role={data.role} />
   <div class="flex flex-col w-full bg-slate-200">
-    <Topbar />
+    <Topbar role={data.role} />
     <slot />
   </div>
 </div>

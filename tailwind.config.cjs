@@ -13,12 +13,12 @@ module.exports = {
         },
       },
       screens: {
-        'smm': {'max': '640px'},
-      // => @media (max-width: 640px) { ... }
-      }
-    },
-    fontFamily: {
-      Poppins: ['Poppins, sans-serif'],
+        smm: { max: '640px' },
+        // => @media (max-width: 640px) { ... }
+      },
+      fontFamily: {
+        Poppins: ['Poppins, sans-serif'],
+      },
     },
     container: {
       center: true,
@@ -31,6 +31,6 @@ module.exports = {
     },
     backgroundImage: {
       'cross-texture': "url('/img/misc/diagonal.png')",
-    }
+    },
   },
 }

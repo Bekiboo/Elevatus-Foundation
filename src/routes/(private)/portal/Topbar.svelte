@@ -4,7 +4,7 @@
   import { goto } from '$app/navigation'
   import toast from 'svelte-french-toast'
   import UserSvg from '$lib/svg/icons/UserSvg.svelte'
-  import DownArrowSvg from '$lib/SVG/symbols/DownArrowSvg.svelte'
+  import DownArrowSvg from '$lib/svg/symbols/DownArrowSvg.svelte'
 
   export let role
 

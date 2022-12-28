@@ -1,38 +1,9 @@
 <script>
   import Hero from '$lib/components/Public/Hero.svelte'
   import dateFormat from 'dateformat'
+  import { MetaTags } from 'svelte-meta-tags'
 
   export let data
-
-  console.log(data.body[0]);
-
-  // console.log(data.images.array[0])
-
-  // console.log(data.body.paragraphs)
-  // let paragraphs = data.body.split('\n\n')
-  // let pictures = data.images.array
-
-  // console.log('Paragraph Length: ' + paragraphs.length)
-  // console.log(images[0])
-
-  // let pictures = data.tertiary_img
-  // pictures.push(data.secondary_img)
-  // pictures.push(data.tertiary_img)
-
-  // let sections = []
-
-  // for (let i = 0; i < paragraphs.length; i++) {
-  //   if (paragraphs.length == 1) {
-  //     sections.push({ text: paragraphs[i] })
-  //     sections.push({ img: pictures[0].url })
-  //     sections.push({ img: pictures[1].url })
-  //     break
-  //   }
-  //   sections.push({ text: paragraphs[i] })
-  //   if (pictures[i]) {
-  //     sections.push({ img: pictures[i] })
-  //   }
-  // }
 
   function getDate(e) {
     return dateFormat(e, 'mmmm dS, yyyy')
@@ -50,6 +21,25 @@
   <title>Elevatus | Blog</title>
 </svelte:head>
 
+<MetaTags
+  title={data.title}
+  description={data.caption}
+  openGraph={{
+    url: `https://www.elevatus-foundation.org/blog/${data.id}`,
+    title: data.title,
+    description: data.caption,
+    images: [
+      {
+        url: data.img[0].url,
+        width: 800,
+        height: 600,
+        alt: data.img[0].alt,
+      },
+    ],
+    site_name: 'Elevatus',
+  }}
+/>
+
 <Hero {...hero} />
 
 <div class="container my-8 max-w-[60ch]">
@@ -64,14 +54,10 @@
     </div>
   </div>
   {#each data.body as paragraph, i}
-      <p class="mt-4 whitespace-pre-line">{paragraph}</p>
+    <p class="mt-4 whitespace-pre-line">{paragraph}</p>
 
-      {#if data?.img[i]}
-      <img
-        class="w-full mt-4"
-        src={data.img[i].url}
-        alt={data.img[i].alt}
-      />
-      {/if}
+    {#if data?.img[i]}
+      <img class="w-full mt-4" src={data.img[i].url} alt={data.img[i].alt} />
+    {/if}
   {/each}
 </div>

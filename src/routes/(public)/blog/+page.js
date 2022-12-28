@@ -14,7 +14,6 @@ export const load = async () => {
     const { data, error } = await supabaseClient.from('blog-post').select()
     if (error) return console.error('loadBlogPosts: ', error)
 
-    console.log(data);
     // Todo: sort by date rather than by id
     data.sort((a, b) => {
       return b.id - a.id
@@ -23,7 +22,6 @@ export const load = async () => {
     blogPosts.set(data)
 
     let blogPostIds = data.map(a => a.id)
-    console.log(blogPostIds);
     return { blogPostsValue }
   } else {
     return { blogPostsValue }

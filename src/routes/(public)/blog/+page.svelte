@@ -7,7 +7,6 @@
   blogPosts.subscribe((list) => {
     blogPostList = list
   })
-  console.log(blogPostList)
 
   const hero = {
     src: 'img/hero/group_picture_zoo.jpg',

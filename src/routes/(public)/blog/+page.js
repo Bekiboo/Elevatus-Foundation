@@ -21,6 +21,7 @@ export const load = async () => {
 
     blogPosts.set(data)
 
+    // TODO: fix this
     let blogPostIds = data.map(a => a.id)
     return { blogPostsValue }
   } else {

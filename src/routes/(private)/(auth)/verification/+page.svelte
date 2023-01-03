@@ -16,7 +16,7 @@
     You will need to verify your email to complete registration
   </p>
 
-  <img class="mx-auto my-12" src="img/SVG/mailbox.svg" width="150px" alt="" />
+  <img class="mx-auto my-12" src="img/vector/mailbox.svg" width="150px" alt="" />
 
   <p class="max-w-[64ch] opacity-80 font-light">
     An email has been sent to <b class="font-semibold">{data?.email}</b> with a link

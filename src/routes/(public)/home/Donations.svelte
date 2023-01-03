@@ -1,6 +1,6 @@
 <section class="container flex justify-evenly gap-8 items-center flex-col-reverse md:flex-row my-16">
     
-      <img class="grow my-8 max-w-sm" src="img/svg/pie-chart-elevatus.svg" alt="Financial Chart of Elevatus" />
+      <img class="grow my-8 max-w-sm" src="img/vector/pie-chart-elevatus.svg" alt="Financial Chart of Elevatus" />
 
       <div class="grow max-w-[45ch]">
         <h2 class="text-2xl text-blue-500 uppercase font-semibold">Where does your donation go?</h2>

@@ -37,7 +37,7 @@
       <div class="grid grid-cols-2 items-center mb-8 text-right h-32 sm:h-40">
         <img
           class="grow max-h-32 sm:max-h-40"
-          src="img/SVG/icon-labor.svg"
+          src="img/vector/icon-labor.svg"
           alt=""
         />
         <div>
@@ -49,7 +49,7 @@
       <div class="grid grid-cols-2 items-center mb-8 text-right h-32 sm:h-40">
         <img
           class="grow max-h-32 sm:max-h-40"
-          src="img/SVG/icon-hungry.svg"
+          src="img/vector/icon-hungry.svg"
           alt=""
         />
         <div>
@@ -61,7 +61,7 @@
       <div class="grid grid-cols-2 items-center mb-8 text-right h-32 sm:h-40">
         <img
           class="grow max-h-32 sm:max-h-40"
-          src="img/SVG/icon-married.svg"
+          src="img/vector/icon-married.svg"
           alt=""
         />
         <div>
@@ -83,7 +83,7 @@
       <div class="grid grid-cols-2 items-center mb-8 text-right h-32 sm:h-40">
         <img
           class="grow max-h-32 sm:max-h-40"
-          src="img/SVG/icon-education.svg"
+          src="img/vector/icon-education.svg"
           alt=""
         />
         <div>
@@ -100,7 +100,7 @@
       <div class="grid grid-cols-2 items-center mb-8 text-right h-32 sm:h-40">
         <img
           class="grow max-h-32 sm:max-h-40"
-          src="img/SVG/icon-wellfed.svg"
+          src="img/vector/icon-wellfed.svg"
           alt=""
         />
         <div>
@@ -115,7 +115,7 @@
       <div class="grid grid-cols-2 items-center mb-8 text-right h-32 sm:h-40">
         <img
           class="grow max-h-32 sm:max-h-40"
-          src="img/SVG/icon-friends.svg"
+          src="img/vector/icon-friends.svg"
           alt=""
         />
         <div>

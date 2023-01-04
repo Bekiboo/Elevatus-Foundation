@@ -4,8 +4,6 @@
   import Button from '$lib/components/Public/Button.svelte'
   import Hamburger from '$lib/components/Public/Header/Hamburger.svelte'
   import SideNav from '$lib/components/Public/Header/SideNav.svelte'
-  // import Auth from '$lib/auth/Auth.svelte'
-  // import UserMobile from './UserMobile.svelte'
 
   export let menuOpened = false
   export let userOpened = false

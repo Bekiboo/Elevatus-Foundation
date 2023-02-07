@@ -10,7 +10,7 @@
   }
 
   const hero = {
-    src: data.img[0].url,
+    src: data.img[0],
     alt: 'Under Construction',
     title: data.title,
     subtitle: data.caption,
@@ -30,10 +30,10 @@
     description: data.caption,
     images: [
       {
-        url: data.img[0].url,
+        url: data.img[0],
         width: 800,
         height: 600,
-        alt: data.img[0].alt,
+        alt: data.caption,
       },
     ],
     site_name: 'Elevatus',
@@ -46,7 +46,7 @@
   <div class="flex justify-between">
     <a href="/blog">&larr; Back to the Blog</a>
     <div class="flex flex-col">
-      {#if data.author.firstName}
+      {#if data?.author?.firstName}
         <div>By {data.author.firstName} {data.author.lastName}</div>
         <div class="text-sm">{data.author.title}</div>
       {/if}
@@ -54,10 +54,11 @@
     </div>
   </div>
   {#each data.body as paragraph, i}
-    <p class="mt-4 whitespace-pre-line">{paragraph}</p>
-
+    {#if paragraph != null}
+      <p class="mt-4 whitespace-pre-line">{paragraph}</p>
+    {/if}
     {#if data?.img[i]}
-      <img class="w-full mt-4" src={data.img[i].url} alt={data.img[i].alt} />
+      <img class="w-full mt-4" src={data.img[i]} alt="image n°{i}" />
     {/if}
   {/each}
 </div>

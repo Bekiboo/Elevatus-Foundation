@@ -25,6 +25,7 @@
 		"@supabase/gotrue-js": "^2.4.2",
 		"@supabase/supabase-js": "^2.0.5",
 		"dateformat": "^5.0.3",
+		"sharp": "^0.31.3",
 		"svelte-french-toast": "^1.0.3",
 		"zod": "^3.19.1"
 	}

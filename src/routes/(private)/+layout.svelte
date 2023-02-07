@@ -8,8 +8,8 @@
     const {
       data: { subscription },
     } = supabaseClient.auth.onAuthStateChange(async (event, session) => {
-      console.log(event);
-      console.log(session);
+      // console.log(event);
+      // console.log(session);
       if (event == 'PASSWORD_RECOVERY') {
         const newPassword = prompt(
           'What would you like your new password to be?'

@@ -1,12 +1,7 @@
 <script>
   import Hero from '$lib/components/Public/Hero.svelte'
   import dateformat from 'dateformat'
-  import { blogPosts } from './store'
-
-  let blogPostList = []
-  blogPosts.subscribe((list) => {
-    blogPostList = list
-  })
+  import { blogPosts } from '$lib/stores/blog'
 
   const hero = {
     src: 'img/hero/group_picture_zoo.jpg',
@@ -21,9 +16,9 @@
 
   function makeExcerpt(i, length) {
     let text = (
-      blogPostList[i].body[0] +
-      blogPostList[i].body[1] +
-      blogPostList[i].body[2]
+      $blogPosts[i].body[0] +
+      $blogPosts[i].body[1] +
+      $blogPosts[i].body[2]
     ).substring(0, length)
     return text
   }
@@ -37,7 +32,7 @@
 
 <section class="container min-h-[50vh]">
   <div class="w-full">
-    {#each blogPostList as blogPost, i}
+    {#each $blogPosts as blogPost, i}
       {#if i == 0}
         <div
           class="flex flex-col mx-auto max-w-2xl md:flex-row lg:max-w-6xl my-16"
@@ -48,7 +43,7 @@
           >
             <img
               class="object-cover w-full h-96 md:w-full"
-              src={blogPost.img[0].url}
+              src={blogPost.img[0]}
               alt={blogPost.title}
             />
           </a>
@@ -76,13 +71,13 @@
     {/each}
 
     <div class="flex gap-x-8 gap-y-16 flex-wrap">
-      {#each blogPostList as blogPost, i}
+      {#each $blogPosts as blogPost, i}
         {#if i != 0}
           <div class="flex flex-col mx-auto md:max-w-xs">
             <a href="/blog/{blogPost.id}" class="hover:opacity-80 duration-100">
               <img
                 class="object-cover w-full h-96 md:h-auto md:w-full"
-                src={blogPost.img[0].url}
+                src={blogPost.img[0]}
                 alt={blogPost.title}
               />
             </a>

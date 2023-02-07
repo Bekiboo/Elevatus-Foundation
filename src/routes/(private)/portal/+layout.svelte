@@ -5,10 +5,10 @@
   export let data
 </script>
 
-<div class="flex">
+<div class="fixed z-[99999999]">
   <Sidebar role={data.role} />
-  <div class="flex flex-col w-full bg-slate-200">
-    <Topbar role={data.role} />
-    <slot />
-  </div>
+</div>
+<div class="flex flex-col bg-slate-200 ml-56">
+  <Topbar role={data.role} />
+  <slot />
 </div>

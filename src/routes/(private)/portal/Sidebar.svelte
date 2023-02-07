@@ -1,22 +1,26 @@
 <script>
-  import BlogSvg from '$lib/svg/icons/BlogSvg.svelte'
-  import DashboardSvg from '$lib/svg/icons/DashboardSvg.svelte'
-  // import DonorsSvg from '$lib/svg/icons/DonorsSVG.svelte'
+  import Svg from '$lib/svg/Svg.svelte'
   import { adminMode } from '$lib/stores'
+  import { blogSvg, chevronSvg, childrenSvg, dashboardSvg, donorsSvg } from '$lib/svg/svgPathList'
 
   export let role
+  let menuItem = 'dashboard'
+
+  function selectMenuItem(name) {
+    menuItem == name ? (menuItem = '') : (menuItem = name)
+  }
 </script>
 
 <aside aria-label="Sidebar">
-  <div class="overflow-y-auto w-64 py-4 px-3 bg-slate-800 h-screen">
+  <div class="overflow-y-auto w-56 py-4 px-3 bg-slate-800 h-screen">
     <!-- Logo -->
     <a href="/home"
       ><img
         class="h-10 mx-auto mt-2 mb-4 -translate-y-1"
-        src="../../img/icons/white_logo.png"
+        src="../../../img/icons/white_logo.png"
         alt="Elevatus Logo"
-      /></a
-    >
+      />
+    </a>
 
     <!-- Toggle Admin Mode -->
     {#if role === 'admin'}
@@ -38,7 +42,7 @@
     {/if}
 
     <!-- Links -->
-    <ul class="space-y-2 text-slate-500">
+    <ul class="space-y-2 text-slate-500 select-none">
       <!-- for ADMIN -->
       {#if $adminMode && role === 'admin'}
         <li class="cursor-not-allowed">
@@ -46,32 +50,97 @@
             href="/portal/admin/dashboard"
             class="flex items-center p-2 text-base hover:text-white transition-all pointer-events-none"
           >
-            <DashboardSvg />
+            <Svg path={dashboardSvg} />
             <span class="ml-3">Dashboard</span>
           </a>
         </li>
-        <li>
-          <a
-            href="/portal/admin/blog"
-            class="flex items-center p-2 text-base hover:text-white transition-all"
-          >
-            <BlogSvg />
-            <span class="flex-1 ml-3 whitespace-nowrap">Blog</span>
-            <!-- <span
-            class="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium rounded-full bg-gray-700 text-gray-300"
-            >Pro</span
-          > -->
-          </a>
+
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <li
+          class="flex flex-col mx-2 pt-4"
+        >
+          <div class="flex justify-between hover:text-white duration-100 cursor-pointer"
+          class:white-text={menuItem == 'blog'}
+          on:click={() => selectMenuItem('blog')}>
+            <div class="flex">
+              <Svg path={blogSvg} />
+              <div class="w-min mx-2 uppercase font-medium">Blog</div>
+            </div>
+            <Svg path={chevronSvg} rotation={menuItem == 'blog' ? 180 : 0} />
+          </div>
+          <ul style="display: {menuItem == 'blog' ? 'block' : 'none'}">
+            <li class="mt-2">
+              <a
+                href="/portal/admin/blog"
+                class="flex items-center ml-2 text-base hover:text-white transition-all"
+              >
+                <span class="flex-1 ml-3 whitespace-nowrap">Manage</span>
+              </a>
+            </li>
+            <li class="mt-2">
+              <a
+                href="/portal/admin/blog/create-or-update"
+                class="flex items-center ml-2 text-base hover:text-white transition-all"
+              >
+                <span class="flex-1 ml-3 whitespace-nowrap">Create New Post</span>
+              </a>
+            </li>
+          </ul>
         </li>
-        <li class="cursor-not-allowed">
-          <a
-            href="#"
-            class="flex items-center p-2 text-base hover:text-white transition-all pointer-events-none"
-          >
-            <!-- <DonorsSvg /> -->
-            <img src="" alt="" />
-            <span class="flex-1 ml-3 whitespace-nowrap">Donors</span>
-          </a>
+
+
+
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <li
+          class="flex flex-col mx-2 pt-4"
+        >
+          <div class="flex justify-between hover:text-white duration-100 cursor-pointer"
+          class:white-text={menuItem == 'donors'}
+          on:click={() => selectMenuItem('donors')}>
+            <div class="flex">
+              <Svg path={donorsSvg} />
+              <div class="w-min mx-2 uppercase font-medium">Donors</div>
+            </div>
+         
+         
+         <Svg path={chevronSvg} rotation={menuItem == 'donors' ? 180 : 0} />
+          </div>
+          <ul style="display: {menuItem == 'donors' ? 'block' : 'none'}">
+            <li class="mt-2">
+              <a
+                href="/portal/admin/donors"
+                class="flex items-center ml-2 text-base hover:text-white transition-all"
+              >
+                <span class="flex-1 ml-3 whitespace-nowrap">Manage</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <li
+          class="flex flex-col mx-2 pt-4"
+        >
+          <div class="flex justify-between hover:text-white duration-100 cursor-pointer"
+          class:white-text={menuItem == 'children'}
+          on:click={() => selectMenuItem('children')}>
+            <div class="flex">
+              <Svg path={childrenSvg}/>
+              <div class="w-min mx-2 uppercase font-medium">Children</div>
+            </div>
+            <Svg path={chevronSvg} rotation={menuItem == 'children' ? 180 : 0} />
+          </div>
+          <ul style="display: {menuItem == 'children' ? 'block' : 'none'}">
+            <li class="mt-2">
+              <a
+                href="/portal/admin/children"
+                class="flex items-center ml-2 text-base hover:text-white transition-all"
+              >
+                <span class="flex-1 ml-3 whitespace-nowrap">Manage</span>
+              </a>
+            </li>
+          </ul>
         </li>
       {/if}
 
@@ -82,7 +151,7 @@
             href="/portal/admin/dashboard"
             class="flex items-center p-2 text-base hover:text-white transition-all pointer-events-none"
           >
-            <DashboardSvg />
+          <Svg path={dashboardSvg} />
             <span class="ml-3">Dashboard</span>
           </a>
         </li>
@@ -91,3 +160,8 @@
   </div>
 </aside>
 
+<style>
+  .white-text {
+    color: white;
+  }
+</style>

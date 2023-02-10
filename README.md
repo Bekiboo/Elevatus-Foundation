@@ -8,6 +8,11 @@ Welcome to the Elevatus Foundation Website! This website was built with the purp
   * Blog powered by **Supabase**, a powerful and secure database-as-a-service.
   * Contact form powered by **SendGrid**, a reliable email delivery service.
 
+## To-Do
+- [ ] Improving the "Our Team" page with biographies
+- [ ] Redo the entire UX/UI for the blog
+- [ ] Adding scrolling animations on the landing page
+
 ## Get Involved
 I encourage you to explore the Elevatus Foundation website and learn more about the incredible work being done. If you're interested in getting involved or making a donation, please visit the "Contact Us" page to get in touch with the team.
 

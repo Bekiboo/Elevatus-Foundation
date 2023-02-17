@@ -6,8 +6,8 @@
   import Hero from '$lib/components/Public/Hero.svelte'
 
   const hero = {
-    src: 'img/hero/hero_team.jpg',
-    alt: 'Under Construction',
+    src: './../../../img/hero/cancel.jpg',
+    alt: '404',
     title: $page.status === 404 ? '404' : $page.status,
     subtitle: $page.status === 404 ? 'Page not found' : $page.error?.name,
   }
@@ -22,7 +22,7 @@
 <Hero {...hero} />
 
 <section class="container flex flex-col gap-8 my-8">
-  <div class="min-h-[20vh] mx-auto mt-8">
+  <div class="min-h-[40vh] mx-auto mt-8">
     <p class="text-2xl">Sorry, we couldn't find the page you're looking for.</p>
   </div>
 </section>

@@ -7,12 +7,12 @@
   let title
   let caption
   let preview
-  export let images
+  export let heroImage
 
   function updatePreview(e) {
-    let image = e.target.files[0]
-    preview = getPreview(image)
-    images.set('imageMain' ,image)
+    let file = e.target.files[0]
+    preview = getPreview(file)
+    heroImage = file
   }
 </script>
 
@@ -39,7 +39,7 @@
       <p class="text-xs mb-14">SVG, PNG, JPG or GIF (MAX. 500KB)</p>
     </div>
     <img
-      class="object-cover absolute brightness-[35%] z-10"
+      class="w-full object-cover absolute brightness-[35%] z-10"
       src={preview}
       alt=""
     />

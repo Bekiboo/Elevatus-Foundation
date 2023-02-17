@@ -14,14 +14,18 @@
     return dateformat(e, 'mmmm dS, yyyy')
   }
 
-  function makeExcerpt(i, length) {
-    let text = (
-      $blogPosts[i].body[0] +
-      $blogPosts[i].body[1] +
-      $blogPosts[i].body[2]
-    ).substring(0, length)
-    return text
+  function makeExcerpt(blogPost, length) {
+    return blogPost.elements
+      .map// concatenate value in elements map when type is text
+      (function (e) {
+        if (e.type == 'paragraph') {
+          return e.value
+        }
+      })
+      .join(' ')
+      .substring(0, length)
   }
+  console.log($blogPosts)
 </script>
 
 <svelte:head>
@@ -43,8 +47,8 @@
           >
             <img
               class="object-cover w-full h-96 md:w-full"
-              src={blogPost.img[0]}
-              alt={blogPost.title}
+              src={blogPost?.elements[0].value}
+              alt={blogPost?.title}
             />
           </a>
           <div class="flex flex-col p-4 leading-normal">
@@ -59,7 +63,7 @@
               {blogPost.caption != null ? blogPost.caption : ''}
             </p>
             <div>
-              {makeExcerpt(i, 400)}
+              {makeExcerpt(blogPost, 400)}
               <a href="/blog/{blogPost.id}" class="hover:text-orange-500"
                 >[...]</a
               >
@@ -74,31 +78,31 @@
       {#each $blogPosts as blogPost, i}
         {#if i != 0}
           <div class="flex flex-col mx-auto md:max-w-xs">
-            <a href="/blog/{blogPost.id}" class="hover:opacity-80 duration-100">
+            <a href="/blog/{blogPost?.id}" class="hover:opacity-80 duration-100">
               <img
                 class="object-cover w-full h-96 md:h-auto md:w-full"
-                src={blogPost.img[0]}
-                alt={blogPost.title}
+                src={blogPost?.elements[0].value}
+                alt={blogPost?.title}
               />
             </a>
             <div class="flex flex-col p-4 leading-normal">
-              <a href="/blog/{blogPost.id}"
+              <a href="/blog/{blogPost?.id}"
                 ><h5
                   class="mb-2 text-4xl font-bold tracking-tight text-gray-900 hover:text-orange-500"
                 >
-                  {blogPost.title}
+                  {blogPost?.title}
                 </h5></a
               >
               <p class="mb-3 font-normal text-gray-700">
-                {blogPost.caption != null ? blogPost.caption : ''}
+                {blogPost?.caption != null ? blogPost?.caption : ''}
               </p>
               <div>
-                {makeExcerpt(i, 200)}
-                <a href="/blog/{blogPost.id}" class="hover:text-orange-500"
+                {makeExcerpt(blogPost, 200)}
+                <a href="/blog/{blogPost?.id}" class="hover:text-orange-500"
                   >[...]</a
                 >
               </div>
-              <div class="pt-2"><p>{getDate(blogPost.created_at)}</p></div>
+              <div class="pt-2"><p>{getDate(blogPost?.created_at)}</p></div>
             </div>
           </div>
         {/if}

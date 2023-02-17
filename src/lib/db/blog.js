@@ -7,7 +7,7 @@ export async function getPosts() {
 
   // Sort posts by id
   data.sort((a, b) => b.id - a.id)
-
+  // console.log('getPosts: ', data[0].elements);
   return data
 }
 

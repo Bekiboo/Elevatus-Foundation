@@ -1,44 +1,35 @@
 <script>
+  import { onMount } from 'svelte'
+  //   import { createEventDispatcher } from 'svelte'
   import Svg from '$lib/svg/Svg.svelte'
   import { uploadSvg } from '$lib/svg/svgPathList'
   import { getPreview } from '$lib/utils'
 
-  export let index
-  export let images
-
-  let paragraph
-  let preview
+  export let element
+  export let preview
+  export let i
 
   function updatePreview(e) {
     let image = e.target.files[0]
     preview = getPreview(image)
-    images.set('image' + index, image)
+    element.value = image
   }
+
+  onMount(() => {
+    preview = ''
+  })
 </script>
 
-<!-- Paragraph -->
-<label class="w-full mt-8">
-  <textarea
-    class="w-full h-48"
-    type="message"
-    name={'paragraph' + index}
-    placeholder="Paragraph {index}..."
-    bind:this={paragraph}
-  />
-</label>
-<br />
-
-<!-- Image -->
 <div class="relative flex items-center justify-center w-full">
   <label
-    for="dropzone-image{index}"
+    for="dropzone-image{i}"
     class="relative flex flex-col items-center justify-center w-full h-64 sm:h-96 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 overflow-hidden"
   >
     <div class="z-20 text-gray-500">
       <input
-        id="dropzone-image{index}"
+        id="dropzone-image{i}"
         type="file"
-        name={'image' + index}
+        name={'image' + i}
         accept="image/*"
         on:change={(e) => updatePreview(e)}
         class="hidden"

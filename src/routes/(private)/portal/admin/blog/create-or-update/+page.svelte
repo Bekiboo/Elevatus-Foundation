@@ -3,64 +3,78 @@
   import { supabaseClient } from '$lib/db/supabase'
   import { loadingState } from '$lib/stores'
   import Svg from '$lib/svg/Svg.svelte'
-  import { plusCircleSvg } from '$lib/svg/svgPathList'
+  import { plusCircleSvg, trashSvg } from '$lib/svg/svgPathList'
   import toast from 'svelte-french-toast'
-  import BlogSection from './BlogSection.svelte'
   import HeroSection from './HeroSection.svelte'
+  import ImageInput from './ImageInput.svelte'
+  import ParagraphInput from './ParagraphInput.svelte'
+  import TitleInput from './TitleInput.svelte'
 
   // imagesToUpload.subscribe((value) => {
   //   console.log(value)
   // })
 
   let errors
+  let showDelete = false
+  let heroImage
 
-  let sections = [1]
-  const images = new Map()
+  let elements = [
+    { type: 'title', value: '' },
+    { type: 'paragraph', value: '' },
+    { type: 'image', value: null },
+  ]
 
-  function addSection() {
-    sections = [...sections, sections.length + 1]
+  function addElement(type) {
+    elements.push({ type, value: '' })
+    elements = [...elements]
   }
 
   const submitForm = ({ form }) => {
-
     loadingState.set(true)
     return async ({ result, update }) => {
-      let imagesPaths = []
 
-      images.forEach(async (image) => {
-        const uuid =
-          Math.random().toString(36).substring(2, 15) +
-          Math.random().toString(36).substring(2, 15)
+      // add hero image to the beginning of the elements array
+      elements.unshift({type: 'image', value: heroImage})
 
-        imagesPaths.push('https://prglggfnitlwkefkgkaa.supabase.co/storage/v1/object/public/blog/images/' + uuid)
-        console.log(imagesPaths);
+      // const images = elements
+      //   .filter((obj) => obj.type === 'image')
+      //   .map((obj) => obj.value)
+
+      const images = new Map()
+
+      const readyToSendEements = elements.map((obj) => {
+        if (obj.type === 'image') {
+          const uuid =
+            Math.random().toString(36).substring(2, 15) +
+            Math.random().toString(36).substring(2, 15)
+          images.set(uuid, obj.value)
+          return {
+            type: obj.type,
+            value:
+              'https://prglggfnitlwkefkgkaa.supabase.co/storage/v1/object/public/blog/images/' +
+              uuid,
+          }
+        }
+        return obj
+      })
+      console.log(readyToSendEements)
+      console.log(images);
+
+      images.forEach(async (key, value) => {
+        // console.log('KEY: ' +key);
+        // console.log('VALUE: ' + value);
         const { data, error } = await supabaseClient.storage
           .from('blog')
-          .upload('images/' + uuid, image)
+          .upload('images/' + value, key)
+          console.log(data)
 
         if (error) console.log(error)
       })
 
-      const body = [
-        form.paragraph1?.value,
-        form.paragraph2?.value,
-        form.paragraph3?.value,
-        form.paragraph4?.value,
-        form.paragraph5?.value,
-      ]
 
-      console.log('imagesPaths: ' + imagesPaths);
-      console.log('body: ' + body);
-      console.log('form: ' + form);
-      console.log('form.title: ' + form.title);
-      console.log('form.caption: ' + form.caption);
-      
       const { data, error } = await supabaseClient.from('blog-post').insert([
         {
-          title: form.title.value,
-          caption: form.caption.value,
-          body,
-          img: imagesPaths,
+          elements: readyToSendEements,
         },
       ])
 
@@ -86,25 +100,65 @@
 </script>
 
 <form method="POST" use:enhance={submitForm} novalidate>
-  <HeroSection {images} />
+  <HeroSection bind:heroImage />
 
   <!-- button to increment sections -->
 
   <div class="flex flex-col items-center container max-w-[60ch]">
-    {#each sections as section}
+    <!-- {#each sections as section}
       <BlogSection index={section} {images} />
+    {/each} -->
+    {#each elements as element, i}
+      <div
+        class="flex w-full relative"
+        on:mouseenter={() => (showDelete = i)}
+        on:mouseleave={() => (showDelete = null)}
+      >
+        {#if element.type === 'title'}
+          <TitleInput bind:element />
+        {/if}
+        {#if element.type === 'paragraph'}
+          <ParagraphInput bind:element />
+        {/if}
+        {#if element.type === 'image'}
+          <ImageInput {element} {i} />
+        {/if}
+
+        <!-- delete button -->
+        {#if showDelete === i}
+          <button
+            type="button"
+            class="flex absolute top-0 bottom-0 my-auto h-min right-2 rounded-full p-2 text-white bg-red-500 opacity-50 hover:opacity-100 duration-300"
+            on:click={() => {
+              elements = elements.filter((el) => el !== element)
+            }}
+          >
+            <Svg path={trashSvg} />
+          </button>
+        {/if}
+      </div>
     {/each}
+
     <div class="flex justify-between w-full my-4 items-center">
       <button
         type="submit"
         class="text-white bg-orange-500 hover:bg-orange-400 border-2 border-white shadow-md active:shadow-none font-medium rounded-lg text-sm px-5 py-2.5 text-center duration-100"
         >Submit</button
       >
-      {#if sections.length < 5}
-        <button type="button" class="flex" on:click={addSection}>
-          Add Section <Svg path={plusCircleSvg} />
-        </button>
-      {/if}
+
+      <button type="button" class="flex" on:click={() => addElement('title')}>
+        Add title <Svg path={plusCircleSvg} />
+      </button>
+      <button
+        type="button"
+        class="flex"
+        on:click={() => addElement('paragraph')}
+      >
+        Add paragraph <Svg path={plusCircleSvg} />
+      </button>
+      <button type="button" class="flex" on:click={() => addElement('image')}>
+        Add image <Svg path={plusCircleSvg} />
+      </button>
     </div>
   </div>
 </form>

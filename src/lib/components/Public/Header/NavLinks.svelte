@@ -2,17 +2,18 @@
   import { page } from '$app/stores'
   $: currentPage = $page.url.pathname
   export let link
+  const {url, title} = link
 </script>
 
   <li class="smm:pt-8 ">
     <a
       class="smm:text-3xl text-orange-500 font-medium sm:text-white uppercase underline-offset-4
       before:bg-white"
-      class:active={currentPage === link.url}
-      class:smm:underline={currentPage === link.url}
-      href={link.url}
-      aria-current={currentPage == link.url}
-      on:click>{link.title}</a
+      class:active={currentPage === url}
+      class:smm:underline={currentPage === url}
+      href={url}
+      aria-current={currentPage == url}
+      on:click>{title}</a
     >
   </li>
 

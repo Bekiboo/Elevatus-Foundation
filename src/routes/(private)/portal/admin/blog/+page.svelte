@@ -1,6 +1,6 @@
 <script>
-  import { blogPosts } from '$lib/stores/blog'
-
+  import { deletePost } from '$lib/db/blog';
+  import { blogPosts } from '$lib/stores/blog';
 </script>
 
 <svelte:head>

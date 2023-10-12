@@ -44,7 +44,7 @@
                 {member.firstName}<br />{member.lastName}
               </h3>
               <h4 class="font-bold text-yellow-500">{member.role}</h4>
-              <h5>{member.interests[0]}<br />{member.interests[1]}</h5>
+              <!-- <h5>{member.interests[0]}<br />{member.interests[1]}</h5> -->
             </div>
           </div>
         {/each}
